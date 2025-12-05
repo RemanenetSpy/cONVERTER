@@ -211,7 +211,7 @@ class ConversionEngine:
                 input_file,
                 output_format,
                 {
-                    **options or {},
+                    **(options or {}),
                     "parameters": recipe["output"].get("parameters", {})
                 }
             )
