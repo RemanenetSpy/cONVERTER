@@ -4,7 +4,7 @@ FROM python:3.9-slim
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies (LibreOffice, FFmpeg, Tesseract OCR)
+# Install system dependencies (LibreOffice, FFmpeg, Tesseract, build tools)
 RUN apt-get update && apt-get install -y \
     libreoffice \
     ffmpeg \
@@ -15,14 +15,19 @@ RUN apt-get update && apt-get install -y \
     tesseract-ocr-spa \
     default-jre \
     ghostscript \
+    libjpeg-dev \
+    zlib1g-dev \
+    libpng-dev \
+    gcc \
+    g++ \
+    make \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend requirements first (for caching)
+# Copy backend requirements
 COPY backend-python/requirements.txt .
 
-# Install Python dependencies (including our new High Quality libs)
+# Install Python dependencies from file
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir xhtml2pdf pdfplumber pdf2docx python-docx reportlab pandas openpyxl pillow pydub flask flask-cors werkzeug
 
 # Copy backend code
 COPY backend-python/ .
