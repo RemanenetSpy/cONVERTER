@@ -1,0 +1,67 @@
+Got it, Shiv — if you don’t want to use AI yet, you can still achieve **high‑quality document conversions** by relying on **native engines and open‑source libraries**. The trick is to combine them smartly and add **quality gates** so your converter feels professional without AI overhead.
+
+---
+
+## 🔧 Best Non‑AI Approaches for Document Conversion
+
+### 📄 PDF ↔ Word / Excel / PowerPoint
+- **Use native engines:**
+  - **LibreOffice headless mode** (`soffice --convert-to docx input.pdf`) → free, cross‑platform, preserves layout better than most libraries.
+  - **Microsoft Office COM automation** (Windows only) → perfect fidelity using Word/Excel’s own export logic.
+- **Fallback libraries:**
+  - `pdf2docx` (Python) → reconstructs Word layouts.
+  - `PyMuPDF` → extracts text/images with coordinates for custom rebuilds.
+
+---
+
+### 📊 Excel ↔ PDF
+- **Best fidelity:** `win32com.client` (Windows) → Excel’s native “ExportAsFixedFormat”.
+- **Cross‑platform:** `openpyxl` + `reportlab` → rebuild tables with controlled layout.
+- **Quality gates:** Set print areas, repeat headers, fit‑to‑page scaling.
+
+---
+
+### 📝 Word ↔ PDF
+- **LibreOffice headless mode** → free, cross‑platform, good fidelity.
+- **COM automation (Windows)** → Word’s own export engine.
+- **Tips:** Embed fonts, use consistent styles (Heading, Normal) for clean mapping.
+
+---
+
+### 📚 PDF ↔ ePub / MOBI
+- **Calibre CLI (`ebook-convert`)** → handles reflowable text and images well.
+- **Tips:** Strip headers/footers before conversion, normalize fonts for e‑readers.
+
+---
+
+### 🗄️ CSV ↔ Excel ↔ Parquet
+- **pandas + pyarrow** → schema‑preserving conversions.
+- **Tips:** Validate row/column counts, preserve datatypes, add schema JSON for reproducibility.
+
+---
+
+### 🖼️ Document ↔ Image
+- **ImageMagick** or **PyMuPDF** → render at 300 DPI for sharpness.
+- **Tips:** Preserve vector graphics where possible.
+
+---
+
+## 🌟 Quality Boost Without AI
+- **OCR preprocessing:** Use `ocrmypdf` + Tesseract for scanned PDFs.  
+- **Table detection:** Camelot/Tabula for structured extraction.  
+- **Validation:** Row/column counts, text coverage %, SSIM for images.  
+- **Fallback strategy:** If layout fails, export plain text + images separately with a manifest.  
+- **Reproducibility:** Save conversion recipes (YAML) so jobs can be re‑run identically.
+
+---
+
+## ✅ Takeaway
+You don’t need AI to get **professional‑grade conversions**.  
+- Use **Office/LibreOffice exports** for fidelity.  
+- Add **open‑source libraries** for fallback.  
+- Implement **quality gates** to guarantee trust.  
+- Keep it **local/offline** for privacy and cost‑free operation.
+
+---
+
+👉 Do you want me to **draft a unified pipeline diagram** showing how your converter can decide: *if Office installed → use COM; else → LibreOffice; else → fallback libraries*? That would give you a clear architecture for non‑AI, high‑quality conversions.

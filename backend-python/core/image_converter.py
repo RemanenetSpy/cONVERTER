@@ -17,7 +17,7 @@ class ImageConverter:
     SUPPORTED_FORMATS = ["jpg", "jpeg", "png", "webp", "gif", "bmp", "tiff"]
 
     @staticmethod
-    def get_format_options(format_str: str, quality: int = 80, progressive: bool = True) -> Dict[str, Any]:
+    def get_format_options(format_str: str, quality: int = 95, progressive: bool = True) -> Dict[str, Any]:
         """Get format-specific save options"""
         
         format_lower = format_str.lower()
@@ -57,7 +57,18 @@ class ImageConverter:
         """Convert image to another format with optional transformations"""
         
         try:
-            # Open image
+            # Get input format
+            input_ext = Path(input_path).suffix.lower()[1:]
+            
+            # Handle SVG conversion
+            if input_ext == 'svg':
+                return ImageConverter.svg_to_raster(input_path, output_path, 1024, 1024)
+            
+            # Handle HEIC conversion
+            if input_ext in ['heic', 'heif']:
+                return ImageConverter.heic_to_standard(input_path, output_path, quality)
+            
+            # Standard image conversion
             img = Image.open(input_path)
             
             # Convert RGBA to RGB if necessary
@@ -290,3 +301,110 @@ class ImageConverter:
             "results": results,
             "outputDir": output_dir
         }
+
+    @staticmethod
+    def svg_to_raster(
+        input_path: str,
+        output_path: str,
+        width: int = 1024,
+        height: int = 1024
+    ) -> Dict[str, Any]:
+        """Convert SVG to PNG or JPEG"""
+        
+        try:
+            import cairosvg
+            
+            # Determine output format
+            output_format = Path(output_path).suffix.lower()[1:]
+            
+            if output_format == 'png':
+                cairosvg.svg2png(
+                    url=input_path,
+                    write_to=output_path,
+                    output_width=width,
+                    output_height=height
+                )
+            elif output_format in ['jpg', 'jpeg']:
+                # SVG to PNG first, then to JPEG
+                temp_png = output_path.replace('.jpg', '.png').replace('.jpeg', '.png')
+                cairosvg.svg2png(
+                    url=input_path,
+                    write_to=temp_png,
+                    output_width=width,
+                    output_height=height
+                )
+                
+                # Convert PNG to JPEG
+                img = Image.open(temp_png)
+                rgb_img = img.convert('RGB')
+                rgb_img.save(output_path, 'JPEG', quality=90, optimize=True)
+                os.remove(temp_png)
+            else:
+                raise Exception(f"Unsupported output format: {output_format}")
+            
+            output_size = os.path.getsize(output_path)
+            
+            return {
+                "success": True,
+                "message": f"Converted SVG to {output_format.upper()}",
+                "outputPath": output_path,
+                "format": output_format,
+                "dimensions": {"width": width, "height": height},
+                "fileSize": output_size
+            }
+        
+        except ImportError:
+            raise Exception("cairosvg library not installed. Install with: pip install cairosvg")
+        except Exception as e:
+            raise Exception(f"SVG conversion failed: {str(e)}")
+
+    @staticmethod
+    def heic_to_standard(
+        input_path: str,
+        output_path: str,
+        quality: int = 90
+    ) -> Dict[str, Any]:
+        """Convert HEIC to JPEG or PNG"""
+        
+        try:
+            from pillow_heif import register_heif_opener
+            
+            # Register HEIF opener with Pillow
+            register_heif_opener()
+            
+            # Open HEIC file
+            img = Image.open(input_path)
+            
+            # Determine output format
+            output_format = Path(output_path).suffix.lower()[1:]
+            
+            if output_format in ['jpg', 'jpeg']:
+                # Convert to RGB if necessary
+                if img.mode in ('RGBA', 'LA', 'P'):
+                    background = Image.new('RGB', img.size, (255, 255, 255))
+                    background.paste(img, mask=img.split()[-1] if img.mode != 'P' else None)
+                    img = background
+                img.save(output_path, 'JPEG', quality=quality, optimize=True)
+            elif output_format == 'png':
+                img.save(output_path, 'PNG', optimize=True)
+            else:
+                raise Exception(f"Unsupported output format: {output_format}")
+            
+            output_size = os.path.getsize(output_path)
+            
+            return {
+                "success": True,
+                "message": f"Converted HEIC to {output_format.upper()}",
+                "outputPath": output_path,
+                "format": output_format,
+                "dimensions": {
+                    "width": img.width,
+                    "height": img.height
+                },
+                "fileSize": output_size
+            }
+        
+        except ImportError:
+            raise Exception("pillow-heif library not installed. Install with: pip install pillow-heif")
+        except Exception as e:
+            raise Exception(f"HEIC conversion failed: {str(e)}")

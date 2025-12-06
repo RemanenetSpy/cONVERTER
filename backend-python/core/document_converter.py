@@ -315,3 +315,60 @@ class DocumentConverter:
         
         except Exception as e:
             raise Exception(f"Statistics generation failed: {str(e)}")
+
+    @staticmethod
+    def csv_to_json(input_path: str, output_path: str, orient: str = "records") -> Dict[str, Any]:
+        """Convert CSV to JSON"""
+        
+        try:
+            df = pd.read_csv(input_path)
+            df.to_json(output_path, orient=orient, indent=2)
+            
+            return {
+                "success": True,
+                "message": "Converted CSV to JSON",
+                "rows": len(df),
+                "columns": len(df.columns),
+                "outputPath": output_path
+            }
+        
+        except Exception as e:
+            raise Exception(f"CSV to JSON conversion failed: {str(e)}")
+
+    @staticmethod
+    def json_to_csv(input_path: str, output_path: str) -> Dict[str, Any]:
+        """Convert JSON to CSV"""
+        
+        try:
+            df = pd.read_json(input_path)
+            df.to_csv(output_path, index=False)
+            
+            return {
+                "success": True,
+                "message": "Converted JSON to CSV",
+                "rows": len(df),
+                "columns": len(df.columns),
+                "outputPath": output_path
+            }
+        
+        except Exception as e:
+            raise Exception(f"JSON to CSV conversion failed: {str(e)}")
+
+    @staticmethod
+    def excel_to_json(input_path: str, output_path: str, sheet_index: int = 0) -> Dict[str, Any]:
+        """Convert Excel to JSON"""
+        
+        try:
+            df = pd.read_excel(input_path, sheet_name=sheet_index)
+            df.to_json(output_path, orient="records", indent=2)
+            
+            return {
+                "success": True,
+                "message": "Converted Excel to JSON",
+                "rows": len(df),
+                "columns": len(df.columns),
+                "outputPath": output_path
+            }
+        
+        except Exception as e:
+            raise Exception(f"Excel to JSON conversion failed: {str(e)}")
