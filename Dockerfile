@@ -18,6 +18,10 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     zlib1g-dev \
     libpng-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    libffi-dev \
+    python3-dev \
     gcc \
     g++ \
     make \
@@ -28,7 +32,8 @@ RUN apt-get update && apt-get install -y \
 # Copy backend requirements
 COPY backend-python/requirements.txt .
 
-# Install Python dependencies from file
+# Upgrade pip and install Python dependencies
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy backend code
