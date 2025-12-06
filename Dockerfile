@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
     make \
+    qpdf \
+    pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy backend requirements
