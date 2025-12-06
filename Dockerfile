@@ -22,6 +22,8 @@ RUN apt-get update && apt-get install -y \
     libxslt1-dev \
     libffi-dev \
     python3-dev \
+    build-essential \
+    libfreetype6-dev \
     gcc \
     g++ \
     make \
