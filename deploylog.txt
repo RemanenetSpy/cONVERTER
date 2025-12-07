@@ -1,50 +1,50 @@
-2025-12-07T21:03:58.482088063Z #15 227.7 Adding debian:USERTrust_ECC_Certification_Authority.pem
-2025-12-07T21:03:58.482090614Z #15 227.7 Adding debian:USERTrust_RSA_Certification_Authority.pem
-2025-12-07T21:03:58.482093204Z #15 227.7 Adding debian:XRamp_Global_CA_Root.pem
-2025-12-07T21:03:58.482095804Z #15 227.7 Adding debian:certSIGN_ROOT_CA.pem
-2025-12-07T21:03:58.482098324Z #15 227.7 Adding debian:certSIGN_Root_CA_G2.pem
-2025-12-07T21:03:58.482101114Z #15 227.7 Adding debian:e-Szigno_Root_CA_2017.pem
-2025-12-07T21:03:58.482103704Z #15 227.7 Adding debian:ePKI_Root_Certification_Authority.pem
-2025-12-07T21:03:58.482108274Z #15 227.7 Adding debian:emSign_ECC_Root_CA_-_C3.pem
-2025-12-07T21:03:58.482110914Z #15 227.7 Adding debian:emSign_ECC_Root_CA_-_G3.pem
-2025-12-07T21:03:58.482113574Z #15 227.7 Adding debian:emSign_Root_CA_-_C1.pem
-2025-12-07T21:03:58.482116394Z #15 227.7 Adding debian:emSign_Root_CA_-_G1.pem
-2025-12-07T21:03:58.482118924Z #15 227.7 Adding debian:vTrus_ECC_Root_CA.pem
-2025-12-07T21:03:58.482121504Z #15 227.7 Adding debian:vTrus_Root_CA.pem
-2025-12-07T21:03:58.482124495Z #15 227.7 done.
-2025-12-07T21:03:58.482137955Z #15 227.7 Setting up openjdk-21-jre:amd64 (21.0.9+10-1~deb13u1) ...
-2025-12-07T21:03:58.482140905Z #15 227.8 Setting up default-jre-headless (2:1.21-76) ...
-2025-12-07T21:03:58.618056719Z #15 227.8 Setting up default-jre (2:1.21-76) ...
-2025-12-07T21:03:58.618073849Z #15 227.8 Processing triggers for dictionaries-common (1.30.10) ...
-2025-12-07T21:03:58.61807792Z #15 227.9 debconf: unable to initialize frontend: Dialog
-2025-12-07T21:03:58.618080209Z #15 227.9 debconf: (TERM is not set, so the dialog frontend is not usable.)
-2025-12-07T21:03:58.61808236Z #15 227.9 debconf: falling back to frontend: Readline
-2025-12-07T21:03:58.764506498Z #15 227.9 debconf: unable to initialize frontend: Readline
-2025-12-07T21:03:58.764718533Z #15 227.9 debconf: (This frontend requires a controlling tty.)
-2025-12-07T21:03:58.764723353Z #15 227.9 debconf: falling back to frontend: Teletype
-2025-12-07T21:03:58.764727153Z #15 227.9 debconf: unable to initialize frontend: Teletype
-2025-12-07T21:03:58.764730724Z #15 227.9 debconf: (This frontend requires a controlling tty.)
-2025-12-07T21:03:58.764732913Z #15 227.9 debconf: falling back to frontend: Noninteractive
-2025-12-07T21:03:58.764736814Z #15 228.0 Processing triggers for libgdk-pixbuf-2.0-0:amd64 (2.42.12+dfsg-4) ...
-2025-12-07T21:04:02.625504953Z #15 CANCELED
-2025-12-07T21:04:02.69557463Z ------
-2025-12-07T21:04:02.695598451Z  > [frontend_build 5/6] RUN npm install:
-2025-12-07T21:04:02.695604791Z 1.401 npm error code ENOENT
-2025-12-07T21:04:02.695610301Z 1.401 npm error syscall open
-2025-12-07T21:04:02.695615791Z 1.401 npm error path /build_src/converter/frontend/package.json
-2025-12-07T21:04:02.695621801Z 1.401 npm error errno -2
-2025-12-07T21:04:02.695628562Z 1.401 npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/build_src/converter/frontend/package.json'
-2025-12-07T21:04:02.695632611Z 1.401 npm error enoent This is related to npm not being able to find a file.
-2025-12-07T21:04:02.695636122Z 1.401 npm error enoent
-2025-12-07T21:04:02.695640752Z 1.401 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-07T21_00_10_497Z-debug-0.log
-2025-12-07T21:04:02.695644792Z ------
-2025-12-07T21:04:02.696372611Z Dockerfile:9
-2025-12-07T21:04:02.696401071Z --------------------
-2025-12-07T21:04:02.696405542Z    7 |     COPY . .
-2025-12-07T21:04:02.696409632Z    8 |     WORKDIR /build_src/converter/frontend
-2025-12-07T21:04:02.696413852Z    9 | >>> RUN npm install
-2025-12-07T21:04:02.696417612Z   10 |     RUN npm run build
-2025-12-07T21:04:02.696423382Z   11 |     
-2025-12-07T21:04:02.696427262Z --------------------
-2025-12-07T21:04:02.696431532Z error: failed to solve: process "/bin/sh -c npm install" did not complete successfully: exit code: 254
-2025-12-07T21:04:02.73621424Z error: exit status 1
+2025-12-07T21:16:24.588529503Z #16 195.5 Adding debian:USERTrust_ECC_Certification_Authority.pem
+2025-12-07T21:16:24.588532223Z #16 195.5 Adding debian:USERTrust_RSA_Certification_Authority.pem
+2025-12-07T21:16:24.588534273Z #16 195.5 Adding debian:XRamp_Global_CA_Root.pem
+2025-12-07T21:16:24.588536203Z #16 195.5 Adding debian:certSIGN_ROOT_CA.pem
+2025-12-07T21:16:24.588538003Z #16 195.5 Adding debian:certSIGN_Root_CA_G2.pem
+2025-12-07T21:16:24.588539763Z #16 195.5 Adding debian:e-Szigno_Root_CA_2017.pem
+2025-12-07T21:16:24.588541563Z #16 195.5 Adding debian:ePKI_Root_Certification_Authority.pem
+2025-12-07T21:16:24.588543323Z #16 195.5 Adding debian:emSign_ECC_Root_CA_-_C3.pem
+2025-12-07T21:16:24.588545173Z #16 195.5 Adding debian:emSign_ECC_Root_CA_-_G3.pem
+2025-12-07T21:16:24.588557103Z #16 195.5 Adding debian:emSign_Root_CA_-_C1.pem
+2025-12-07T21:16:24.588558954Z #16 195.5 Adding debian:emSign_Root_CA_-_G1.pem
+2025-12-07T21:16:24.588560734Z #16 195.5 Adding debian:vTrus_ECC_Root_CA.pem
+2025-12-07T21:16:24.588562564Z #16 195.5 Adding debian:vTrus_Root_CA.pem
+2025-12-07T21:16:24.588564404Z #16 195.5 done.
+2025-12-07T21:16:24.742200541Z #16 195.6 Setting up openjdk-21-jre:amd64 (21.0.9+10-1~deb13u1) ...
+2025-12-07T21:16:24.742216281Z #16 195.6 Setting up default-jre-headless (2:1.21-76) ...
+2025-12-07T21:16:24.742219251Z #16 195.6 Setting up default-jre (2:1.21-76) ...
+2025-12-07T21:16:24.742221141Z #16 195.6 Processing triggers for dictionaries-common (1.30.10) ...
+2025-12-07T21:16:24.742222991Z #16 195.7 debconf: unable to initialize frontend: Dialog
+2025-12-07T21:16:24.742224811Z #16 195.7 debconf: (TERM is not set, so the dialog frontend is not usable.)
+2025-12-07T21:16:24.742226841Z #16 195.7 debconf: falling back to frontend: Readline
+2025-12-07T21:16:24.885829301Z #16 195.7 debconf: unable to initialize frontend: Readline
+2025-12-07T21:16:24.885843382Z #16 195.7 debconf: (This frontend requires a controlling tty.)
+2025-12-07T21:16:24.885845712Z #16 195.7 debconf: falling back to frontend: Teletype
+2025-12-07T21:16:24.885847532Z #16 195.7 debconf: unable to initialize frontend: Teletype
+2025-12-07T21:16:24.885849272Z #16 195.7 debconf: (This frontend requires a controlling tty.)
+2025-12-07T21:16:24.885850982Z #16 195.7 debconf: falling back to frontend: Noninteractive
+2025-12-07T21:16:24.885853562Z #16 195.8 Processing triggers for libgdk-pixbuf-2.0-0:amd64 (2.42.12+dfsg-4) ...
+2025-12-07T21:16:27.586609178Z #16 CANCELED
+2025-12-07T21:16:27.650952297Z ------
+2025-12-07T21:16:27.650970317Z  > [frontend_build 6/7] RUN npm install:
+2025-12-07T21:16:27.650975887Z 1.251 npm error code ENOENT
+2025-12-07T21:16:27.650980247Z 1.251 npm error syscall open
+2025-12-07T21:16:27.650985017Z 1.251 npm error path /build_src/converter/frontend/package.json
+2025-12-07T21:16:27.650990788Z 1.251 npm error errno -2
+2025-12-07T21:16:27.650995438Z 1.251 npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/build_src/converter/frontend/package.json'
+2025-12-07T21:16:27.651000188Z 1.252 npm error enoent This is related to npm not being able to find a file.
+2025-12-07T21:16:27.651004588Z 1.252 npm error enoent
+2025-12-07T21:16:27.651009138Z 1.253 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-07T21_13_09_377Z-debug-0.log
+2025-12-07T21:16:27.651013458Z ------
+2025-12-07T21:16:27.651756013Z Dockerfile:10
+2025-12-07T21:16:27.651768913Z --------------------
+2025-12-07T21:16:27.651773813Z    8 |     # Explicitly verify directory structure before install
+2025-12-07T21:16:27.651778193Z    9 |     WORKDIR /build_src/converter/frontend
+2025-12-07T21:16:27.651782523Z   10 | >>> RUN npm install
+2025-12-07T21:16:27.651786083Z   11 |     RUN npm run build
+2025-12-07T21:16:27.651789673Z   12 |     
+2025-12-07T21:16:27.651793333Z --------------------
+2025-12-07T21:16:27.651797513Z error: failed to solve: process "/bin/sh -c npm install" did not complete successfully: exit code: 254
+2025-12-07T21:16:27.666548502Z error: exit status 1

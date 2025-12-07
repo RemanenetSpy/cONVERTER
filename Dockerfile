@@ -4,8 +4,8 @@
 FROM node:18-alpine as frontend_build
 WORKDIR /build_src
 WORKDIR /build_src
-COPY . .
-# Explicitly verify directory structure before install
+# Explicitly copy the frontend source code
+COPY converter/ /build_src/converter/
 WORKDIR /build_src/converter/frontend
 RUN npm install
 RUN npm run build
