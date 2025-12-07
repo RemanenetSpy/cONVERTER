@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Download, Eye, Trash2, ChevronDown } from 'lucide-react';
 import './HistoryPanel.css';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// In production (Render), use relative path
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+  ? '/api'
+  : (process.env.REACT_APP_API_URL || 'http://localhost:5000/api');
 
 function HistoryPanel({ conversions, onRemove }) {
   const [expandedId, setExpandedId] = useState(null);

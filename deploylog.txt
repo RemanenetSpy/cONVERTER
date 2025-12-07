@@ -1,50 +1,50 @@
-2025-12-07T21:16:24.588529503Z #16 195.5 Adding debian:USERTrust_ECC_Certification_Authority.pem
-2025-12-07T21:16:24.588532223Z #16 195.5 Adding debian:USERTrust_RSA_Certification_Authority.pem
-2025-12-07T21:16:24.588534273Z #16 195.5 Adding debian:XRamp_Global_CA_Root.pem
-2025-12-07T21:16:24.588536203Z #16 195.5 Adding debian:certSIGN_ROOT_CA.pem
-2025-12-07T21:16:24.588538003Z #16 195.5 Adding debian:certSIGN_Root_CA_G2.pem
-2025-12-07T21:16:24.588539763Z #16 195.5 Adding debian:e-Szigno_Root_CA_2017.pem
-2025-12-07T21:16:24.588541563Z #16 195.5 Adding debian:ePKI_Root_Certification_Authority.pem
-2025-12-07T21:16:24.588543323Z #16 195.5 Adding debian:emSign_ECC_Root_CA_-_C3.pem
-2025-12-07T21:16:24.588545173Z #16 195.5 Adding debian:emSign_ECC_Root_CA_-_G3.pem
-2025-12-07T21:16:24.588557103Z #16 195.5 Adding debian:emSign_Root_CA_-_C1.pem
-2025-12-07T21:16:24.588558954Z #16 195.5 Adding debian:emSign_Root_CA_-_G1.pem
-2025-12-07T21:16:24.588560734Z #16 195.5 Adding debian:vTrus_ECC_Root_CA.pem
-2025-12-07T21:16:24.588562564Z #16 195.5 Adding debian:vTrus_Root_CA.pem
-2025-12-07T21:16:24.588564404Z #16 195.5 done.
-2025-12-07T21:16:24.742200541Z #16 195.6 Setting up openjdk-21-jre:amd64 (21.0.9+10-1~deb13u1) ...
-2025-12-07T21:16:24.742216281Z #16 195.6 Setting up default-jre-headless (2:1.21-76) ...
-2025-12-07T21:16:24.742219251Z #16 195.6 Setting up default-jre (2:1.21-76) ...
-2025-12-07T21:16:24.742221141Z #16 195.6 Processing triggers for dictionaries-common (1.30.10) ...
-2025-12-07T21:16:24.742222991Z #16 195.7 debconf: unable to initialize frontend: Dialog
-2025-12-07T21:16:24.742224811Z #16 195.7 debconf: (TERM is not set, so the dialog frontend is not usable.)
-2025-12-07T21:16:24.742226841Z #16 195.7 debconf: falling back to frontend: Readline
-2025-12-07T21:16:24.885829301Z #16 195.7 debconf: unable to initialize frontend: Readline
-2025-12-07T21:16:24.885843382Z #16 195.7 debconf: (This frontend requires a controlling tty.)
-2025-12-07T21:16:24.885845712Z #16 195.7 debconf: falling back to frontend: Teletype
-2025-12-07T21:16:24.885847532Z #16 195.7 debconf: unable to initialize frontend: Teletype
-2025-12-07T21:16:24.885849272Z #16 195.7 debconf: (This frontend requires a controlling tty.)
-2025-12-07T21:16:24.885850982Z #16 195.7 debconf: falling back to frontend: Noninteractive
-2025-12-07T21:16:24.885853562Z #16 195.8 Processing triggers for libgdk-pixbuf-2.0-0:amd64 (2.42.12+dfsg-4) ...
-2025-12-07T21:16:27.586609178Z #16 CANCELED
-2025-12-07T21:16:27.650952297Z ------
-2025-12-07T21:16:27.650970317Z  > [frontend_build 6/7] RUN npm install:
-2025-12-07T21:16:27.650975887Z 1.251 npm error code ENOENT
-2025-12-07T21:16:27.650980247Z 1.251 npm error syscall open
-2025-12-07T21:16:27.650985017Z 1.251 npm error path /build_src/converter/frontend/package.json
-2025-12-07T21:16:27.650990788Z 1.251 npm error errno -2
-2025-12-07T21:16:27.650995438Z 1.251 npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/build_src/converter/frontend/package.json'
-2025-12-07T21:16:27.651000188Z 1.252 npm error enoent This is related to npm not being able to find a file.
-2025-12-07T21:16:27.651004588Z 1.252 npm error enoent
-2025-12-07T21:16:27.651009138Z 1.253 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-07T21_13_09_377Z-debug-0.log
-2025-12-07T21:16:27.651013458Z ------
-2025-12-07T21:16:27.651756013Z Dockerfile:10
-2025-12-07T21:16:27.651768913Z --------------------
-2025-12-07T21:16:27.651773813Z    8 |     # Explicitly verify directory structure before install
-2025-12-07T21:16:27.651778193Z    9 |     WORKDIR /build_src/converter/frontend
-2025-12-07T21:16:27.651782523Z   10 | >>> RUN npm install
-2025-12-07T21:16:27.651786083Z   11 |     RUN npm run build
-2025-12-07T21:16:27.651789673Z   12 |     
-2025-12-07T21:16:27.651793333Z --------------------
-2025-12-07T21:16:27.651797513Z error: failed to solve: process "/bin/sh -c npm install" did not complete successfully: exit code: 254
-2025-12-07T21:16:27.666548502Z error: exit status 1
+2025-12-07T22:19:14.27234504Z 
+2025-12-07T22:19:14.2723506Z #38 [stage-1 23/24] COPY --from=frontend_build /build_src/converter/frontend/build ./frontend_build
+2025-12-07T22:19:14.27235469Z #38 DONE 0.0s
+2025-12-07T22:19:14.2723581Z 
+2025-12-07T22:19:14.27237202Z #39 [stage-1 24/24] RUN mkdir -p uploads
+2025-12-07T22:19:14.27237477Z #39 DONE 0.1s
+2025-12-07T22:19:14.427467675Z 
+2025-12-07T22:19:14.427517526Z #40 exporting to docker image format
+2025-12-07T22:19:14.427525786Z #40 exporting layers
+2025-12-07T22:20:52.063617048Z #40 exporting layers 97.8s done
+2025-12-07T22:20:52.252258082Z #40 exporting manifest sha256:1eb9456801dd0431c3c8081ec12bcd1269afc7a1da2dfd4d89248d56f7bd8586 0.0s done
+2025-12-07T22:20:52.252281743Z #40 exporting config sha256:2ea4c5f421156f5813f46dd6ed97158c9772413a260bcc670121b7b447f40e07 0.0s done
+2025-12-07T22:21:01.372609854Z #40 DONE 107.1s
+2025-12-07T22:21:01.522961362Z 
+2025-12-07T22:21:01.555181508Z #41 exporting cache to client directory
+2025-12-07T22:21:01.555197989Z #41 preparing build cache for export
+2025-12-07T22:22:00.998670181Z #41 writing cache image manifest sha256:9a6ff9381773fd2954b010aca580831534158fbec75ff95782acc570459ad3bd 0.0s done
+2025-12-07T22:22:00.998691882Z #41 DONE 59.5s
+2025-12-07T22:22:02.625223679Z Pushing image to registry...
+2025-12-07T22:22:29.517512731Z Upload succeeded
+2025-12-07T22:25:12.307890534Z ==> Deploying...
+2025-12-07T22:26:19.77764377Z ==> No open ports detected, continuing to scan...
+2025-12-07T22:26:19.969843813Z ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+2025-12-07T22:26:30.532699171Z /usr/local/lib/python3.9/site-packages/flask_limiter/extension.py:330: UserWarning: Using the in-memory storage for tracking rate limits as no storage was explicitly specified. This is not recommended for production use. See: https://flask-limiter.readthedocs.io#configuring-a-storage-backend for documentation about configuring the storage backend.
+2025-12-07T22:26:30.532751232Z   warnings.warn(
+2025-12-07T22:26:30.621860343Z ============================================================
+2025-12-07T22:26:30.621889913Z 🔄 Next-Gen File Converter API
+2025-12-07T22:26:30.621893463Z ============================================================
+2025-12-07T22:26:30.621896734Z Environment: development
+2025-12-07T22:26:30.621899123Z Server: http://localhost:10000
+2025-12-07T22:26:30.621902003Z Health Check: http://localhost:10000/api/health
+2025-12-07T22:26:30.621904284Z CORS Origins: *
+2025-12-07T22:26:30.621906674Z Daily Quota: 200MB per IP
+2025-12-07T22:26:30.621909384Z ============================================================
+2025-12-07T22:26:30.621911654Z  * Serving Flask app 'app'
+2025-12-07T22:26:30.622127348Z  * Debug mode: off
+2025-12-07T22:26:30.714851445Z [INFO] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-12-07T22:26:30.714871726Z  * Running on all addresses (0.0.0.0)
+2025-12-07T22:26:30.714895876Z  * Running on http://127.0.0.1:10000
+2025-12-07T22:26:30.714897856Z  * Running on http://10.16.16.35:10000
+2025-12-07T22:26:30.714899546Z [INFO] Press CTRL+C to quit
+2025-12-07T22:26:31.296813471Z [INFO] 127.0.0.1 - - [07/Dec/2025 22:26:31] "HEAD / HTTP/1.1" 200 -
+2025-12-07T22:26:32.998882859Z ==> Your service is live 🎉
+2025-12-07T22:26:33.092206152Z ==> 
+2025-12-07T22:26:33.175565436Z ==> ///////////////////////////////////////////////////////////
+2025-12-07T22:26:33.258693109Z ==> 
+2025-12-07T22:26:33.341815123Z ==> Available at your primary URL https://converter-lmxu.onrender.com
+2025-12-07T22:26:33.425799537Z ==> 
+2025-12-07T22:26:33.50961415Z ==> ///////////////////////////////////////////////////////////
+2025-12-07T22:26:35.258608488Z [INFO] 127.0.0.1 - - [07/Dec/2025 22:26:35] "GET / HTTP/1.1" 200 -

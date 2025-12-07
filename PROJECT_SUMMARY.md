@@ -56,13 +56,12 @@
 
 ### ✅ Completed Features
 - **Core Engine**: Python/Flask backend with multi-format support (PDF, Docs, Images, Audio, Archives).
-- **Frontend**: Modern React UI with Drag & Drop, Dark Mode, and Real-time Progress.
+- **Frontend**: Modern React UI served directly by Flask (Zero-Config deployment).
 - **Deployment**:
-    -   **Docker**: optimized multi-stage build (Node.js + Python).
-    -   **Dependencies**: Full audit completed (py7zr, cairosvg, pillow-heif, etc. added).
-    -   **Serving**: Flask serves React static files at root `/`.
+    -   **Docker**: Robust multi-stage build (Node.js + Python).
+    -   **Fixed**: Resolved complex nested-git submodule issues and Docker context pathing.
+    -   **Dependencies**: All system binaries (LibreOffice, FFmpeg, Tesseract) and Python libs installed.
 
 ### 🔮 Next Steps (For Next Session)
-1.  **Web Testing**: Verify the Live UI handles file uploads correctly.
-2.  **Domain Setup**: (Optional) Add a custom domain.
-3.  **Optimization**: Monitor RAM usage on Render free tier.
+1.  **Live Testing**: Perform real-world file conversions on the deployed site.
+2.  **Performance Tuning**: Watch memory usage logs on Render dashboard.

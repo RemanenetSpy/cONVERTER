@@ -11,7 +11,11 @@ import HealthCheck from './components/HealthCheck';
 import { getFormatIcon } from './utils/formatUtils';
 import { getSmartSuggestion, detectUseCase, getApplicableTemplates } from './utils/smartSuggestions';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// In production (Render), we serve frontend from same origin, so use relative path '/api'
+// In development, we use localhost:5000
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+  ? '/api'
+  : (process.env.REACT_APP_API_URL || 'http://localhost:5000/api');
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
