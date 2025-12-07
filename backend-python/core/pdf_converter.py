@@ -65,7 +65,8 @@ class PDFConverter:
             
             # 2. Convert using pdf2docx
             cv = PDFToWordConverter(processed_path)
-            cv.convert(output_path)
+            # Disable multiprocessing for stability on cloud instances (Render Free Tier)
+            cv.convert(output_path, multi_processing=False)
             cv.close()
             
             # Get page count
