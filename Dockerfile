@@ -59,6 +59,7 @@ RUN pip install pydub
 RUN pip install python-docx
 RUN pip install pdf2docx
 RUN pip install scikit-image
+RUN pip install PyPDF2
 
 # Complex libs last
 RUN pip install ocrmypdf
