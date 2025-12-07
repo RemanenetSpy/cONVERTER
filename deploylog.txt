@@ -1,38 +1,50 @@
-2025-12-07T20:41:52.36723939Z ==> Downloading cache...
-2025-12-07T20:41:52.412233523Z ==> Cloning from https://github.com/RemanenetSpy/cONVERTER
-2025-12-07T20:41:53.205849875Z ==> Checking out commit b8be81547ea3989c4db50872e365a4217e02bfc9 in branch main
-2025-12-07T20:42:00.981344539Z ==> Downloaded 1.2GB in 7s. Extraction took 1s.
-2025-12-07T20:42:28.459772844Z #1 [internal] load build definition from Dockerfile
-2025-12-07T20:42:28.459802755Z #1 transferring dockerfile: 816B done
-2025-12-07T20:42:28.459805725Z #1 DONE 0.0s
-2025-12-07T20:42:28.459808015Z 
-2025-12-07T20:42:28.459810935Z #2 [internal] load metadata for docker.io/library/python:3.9-slim
-2025-12-07T20:42:28.915015305Z #2 ...
-2025-12-07T20:42:28.915029296Z 
-2025-12-07T20:42:28.915032416Z #3 [auth] library/frontend_build:pull render-prod/docker-mirror-repository/library/frontend_build:pull token for us-west1-docker.pkg.dev
-2025-12-07T20:42:28.915035456Z #3 DONE 0.0s
-2025-12-07T20:42:28.915037086Z 
-2025-12-07T20:42:28.915039166Z #4 [auth] library/python:pull render-prod/docker-mirror-repository/library/python:pull token for us-west1-docker.pkg.dev
-2025-12-07T20:42:28.915040966Z #4 DONE 0.0s
-2025-12-07T20:42:29.065241762Z 
-2025-12-07T20:42:29.065268093Z #5 [internal] load metadata for docker.io/library/frontend_build:latest
-2025-12-07T20:42:30.046508587Z #5 ERROR: docker.io/library/frontend_build:latest: not found
-2025-12-07T20:42:30.046529197Z 
-2025-12-07T20:42:30.046534878Z #6 [auth] library/frontend_build:pull token for registry-1.docker.io
-2025-12-07T20:42:30.046539678Z #6 DONE 0.0s
-2025-12-07T20:42:30.046543598Z 
-2025-12-07T20:42:30.046547988Z #2 [internal] load metadata for docker.io/library/python:3.9-slim
-2025-12-07T20:42:30.046552998Z #2 CANCELED
-2025-12-07T20:42:30.046557288Z ------
-2025-12-07T20:42:30.046560198Z  > [internal] load metadata for docker.io/library/frontend_build:latest:
-2025-12-07T20:42:30.046563008Z ------
-2025-12-07T20:42:30.048093542Z Dockerfile:27
-2025-12-07T20:42:30.048109292Z --------------------
-2025-12-07T20:42:30.048113792Z   25 |     
-2025-12-07T20:42:30.048118502Z   26 |     # Copy Frontend Build from Stage 1
-2025-12-07T20:42:30.048123513Z   27 | >>> COPY --from=frontend_build /frontend/build ./frontend_build
-2025-12-07T20:42:30.048127433Z   28 |     
-2025-12-07T20:42:30.048142843Z   29 |     # Create uploads directory
-2025-12-07T20:42:30.048147103Z --------------------
-2025-12-07T20:42:30.048151613Z error: failed to solve: frontend_build: failed to resolve source metadata for docker.io/library/frontend_build:latest: docker.io/library/frontend_build:latest: not found
-2025-12-07T20:42:30.062242444Z error: exit status 1
+2025-12-07T20:45:54.059195283Z #8 ...
+2025-12-07T20:45:54.059211664Z 
+2025-12-07T20:45:54.059216053Z #9 [internal] load build context
+2025-12-07T20:45:54.059219724Z #9 transferring context: 11.88MB 0.1s done
+2025-12-07T20:45:54.059222724Z #9 DONE 0.2s
+2025-12-07T20:45:54.059225434Z 
+2025-12-07T20:45:54.059228564Z #10 [frontend_build 2/6] WORKDIR /frontend
+2025-12-07T20:45:54.059231534Z #10 CACHED
+2025-12-07T20:45:54.059234194Z 
+2025-12-07T20:45:54.059236964Z #11 [frontend_build 4/6] RUN npm ci
+2025-12-07T20:45:54.059239814Z #11 CACHED
+2025-12-07T20:45:54.059242414Z 
+2025-12-07T20:45:54.059245754Z #12 [frontend_build 3/6] COPY converter/frontend/package.json converter/frontend/package-lock.json ./
+2025-12-07T20:45:54.059249284Z #12 ERROR: failed to calculate checksum of ref ckouwmo9nzrvyc6ekr1uaoduo::nnk9wuozx36a1mika32mvj3pf: "/converter/frontend/package.json": not found
+2025-12-07T20:45:54.059251984Z 
+2025-12-07T20:45:54.059255224Z #13 [frontend_build 5/6] COPY converter/frontend/ ./
+2025-12-07T20:45:54.059258694Z #13 ERROR: failed to calculate checksum of ref ckouwmo9nzrvyc6ekr1uaoduo::nnk9wuozx36a1mika32mvj3pf: "/converter/frontend": not found
+2025-12-07T20:45:54.059261374Z 
+2025-12-07T20:45:54.059264245Z #8 [stage-1  1/24] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b
+2025-12-07T20:45:54.059267514Z #8 sha256:ea56f685404adf81680322f152d2cfec62115b30dda481c2c450078315beb508 0B / 251B 0.2s
+2025-12-07T20:45:54.254299161Z #8 ...
+2025-12-07T20:45:54.300490377Z 
+2025-12-07T20:45:54.300502407Z #14 [frontend_build 1/6] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-12-07T20:45:54.300509297Z #14 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2025-12-07T20:45:54.300513348Z #14 DONE 0.4s
+2025-12-07T20:45:54.300516148Z 
+2025-12-07T20:45:54.300538858Z #8 [stage-1  1/24] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b
+2025-12-07T20:45:54.300543578Z #8 sha256:fc74430849022d13b0d44b8969a953f842f59c6e9d1a0c2c83d710affa286c08 0B / 13.88MB 0.2s
+2025-12-07T20:45:54.300546858Z #8 sha256:38513bd7256313495cdd83b3b0915a633cfa475dc2a07072ab2c8d191020ca5d 0B / 29.78MB 0.1s
+2025-12-07T20:45:54.300549858Z #8 sha256:b3ec39b36ae8c03a3e09854de4ec4aa08381dfed84a9daa075048c2e3df3881d 0B / 1.29MB 0.0s
+2025-12-07T20:45:54.50384077Z #8 DONE 0.8s
+2025-12-07T20:45:54.707302314Z 
+2025-12-07T20:45:54.707319295Z #15 [stage-1  2/24] RUN apt-get update && apt-get install -y     libreoffice-writer     libreoffice-calc     libreoffice-java-common     ffmpeg     tesseract-ocr     tesseract-ocr-eng     tesseract-ocr-deu     tesseract-ocr-fra     tesseract-ocr-spa     default-jre     ghostscript     libjpeg-dev     zlib1g-dev     libpng-dev     libxml2-dev     libxslt1-dev     libffi-dev     python3-dev     build-essential     libfreetype6-dev     gcc     g++     make     qpdf     pkg-config     unpaper     libgl1     libglib2.0-0     libcairo2-dev     cmake     && rm -rf /var/lib/apt/lists/*
+2025-12-07T20:45:54.707323295Z #15 CANCELED
+2025-12-07T20:45:56.298113189Z ------
+2025-12-07T20:45:56.29813632Z  > [frontend_build 3/6] COPY converter/frontend/package.json converter/frontend/package-lock.json ./:
+2025-12-07T20:45:56.29816592Z ------
+2025-12-07T20:45:56.29816877Z ------
+2025-12-07T20:45:56.298173981Z  > [frontend_build 5/6] COPY converter/frontend/ ./:
+2025-12-07T20:45:56.29817725Z ------
+2025-12-07T20:45:56.298931435Z Dockerfile:8
+2025-12-07T20:45:56.298939335Z --------------------
+2025-12-07T20:45:56.298942905Z    6 |     COPY converter/frontend/package.json converter/frontend/package-lock.json ./
+2025-12-07T20:45:56.298945765Z    7 |     RUN npm ci
+2025-12-07T20:45:56.298949895Z    8 | >>> COPY converter/frontend/ ./
+2025-12-07T20:45:56.298953405Z    9 |     RUN npm run build
+2025-12-07T20:45:56.298955635Z   10 |     
+2025-12-07T20:45:56.298957675Z --------------------
+2025-12-07T20:45:56.298961295Z error: failed to solve: failed to compute cache key: failed to calculate checksum of ref ckouwmo9nzrvyc6ekr1uaoduo::nnk9wuozx36a1mika32mvj3pf: "/converter/frontend": not found
+2025-12-07T20:45:56.327320357Z error: exit status 1

@@ -2,10 +2,11 @@
 # Stage 1: Build React Frontend
 # ==========================================
 FROM node:18-alpine as frontend_build
-WORKDIR /frontend
-COPY converter/frontend/package.json converter/frontend/package-lock.json ./
+WORKDIR /build_src
+# Copy everything to ensure we have the directories
+COPY . .
+WORKDIR /build_src/converter/frontend
 RUN npm ci
-COPY converter/frontend/ ./
 RUN npm run build
 
 # ==========================================
@@ -77,7 +78,7 @@ RUN pip install ocrmypdf
 COPY backend-python/ .
 
 # Copy Frontend Build from Stage 1
-COPY --from=frontend_build /frontend/build ./frontend_build
+COPY --from=frontend_build /build_src/converter/frontend/build ./frontend_build
 
 # Create uploads directory
 RUN mkdir -p uploads
