@@ -60,6 +60,7 @@ RUN pip install python-docx
 RUN pip install pdf2docx
 RUN pip install scikit-image
 RUN pip install PyPDF2
+RUN pip install python-pptx
 
 # Complex libs last
 RUN pip install ocrmypdf
