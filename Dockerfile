@@ -4,9 +4,14 @@ FROM python:3.9-slim
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies (LibreOffice, FFmpeg, Tesseract, build tools)
+# Install system dependencies
+# Split into multiple RUNs is cleaner for debugging, but single RUN is better for layer size.
+# Fixed: libgl1-mesa-glx -> libgl1 (Debian 12+ compat)
+# Optimized: libreoffice -> libreoffice-writer libreoffice-calc
 RUN apt-get update && apt-get install -y \
-    libreoffice \
+    libreoffice-writer \
+    libreoffice-calc \
+    libreoffice-java-common \
     ffmpeg \
     tesseract-ocr \
     tesseract-ocr-eng \
@@ -30,7 +35,7 @@ RUN apt-get update && apt-get install -y \
     qpdf \
     pkg-config \
     unpaper \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
