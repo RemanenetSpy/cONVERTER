@@ -1,0 +1,495 @@
+/* Mobile Optimization and Advanced Animations */
+
+/* ============================================
+   MOBILE RESPONSIVE DESIGN
+   ============================================ */
+
+/* Mobile First - Base styles for mobile */
+@media (max-width: 768px) {
+    .app {
+        padding: 10px;
+    }
+
+    .app-container {
+        padding: 10px;
+    }
+
+    .app-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .app-header p {
+        font-size: 0.85rem;
+    }
+
+    /* Stack grid on mobile */
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    /* Mobile-friendly cards */
+    .card {
+        padding: 16px;
+        margin-bottom: 15px;
+    }
+
+    /* Format buttons - larger touch targets */
+    .format-btn {
+        min-height: 44px;
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    /* Convert button - full width on mobile */
+    .convert-btn {
+        width: 100%;
+        min-height: 50px;
+        font-size: 16px;
+    }
+
+    /* File uploader - better mobile UX */
+    .upload-area {
+        min-height: 150px;
+        padding: 20px;
+    }
+
+    /* History panel - compact on mobile */
+    .history-item {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* Theme toggle - adjust position */
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    /* Quality slider - larger touch target */
+    .quality-slider {
+        height: 8px;
+    }
+
+    .quality-slider::-webkit-slider-thumb {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Mode toggle - stack on small screens */
+    .mode-toggle {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .mode-toggle button {
+        width: 100%;
+    }
+}
+
+/* Tablet optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .format-btn {
+        font-size: 13px;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Larger touch targets */
+    button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Remove hover effects on touch devices */
+    .format-btn:hover {
+        transform: none;
+    }
+
+    /* Tap highlight */
+    * {
+        -webkit-tap-highlight-color: rgba(102, 126, 234, 0.3);
+    }
+}
+
+/* ============================================
+   ADVANCED ANIMATIONS
+   ============================================ */
+
+/* Smooth page transitions */
+.app {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card entrance animations */
+.card {
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Format button hover animation */
+.format-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.format-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.format-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Progress bar animation */
+.progress-fill {
+    transition: width 0.3s ease-out;
+    animation: shimmer 2s infinite;
+    background: linear-gradient(90deg,
+            #667eea 0%,
+            #764ba2 50%,
+            #667eea 100%);
+    background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* File upload pulse animation */
+.upload-area.drag-active {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+    }
+}
+
+/* Success confetti animation */
+.confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #f0f;
+    top: -10px;
+    animation: confetti-fall 3s linear forwards;
+    z-index: 10000;
+}
+
+@keyframes confetti-fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Loading spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Floating animation for icons */
+.floating-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Slide in from right */
+.slide-in-right {
+    animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Bounce animation */
+.bounce {
+    animation: bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Shake animation for errors */
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* Glow effect */
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+    }
+}
+
+/* ============================================
+   SMART SUGGESTIONS PANEL
+   ============================================ */
+
+.suggestion-panel {
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    animation: slideUp 0.4s ease-out;
+}
+
+.suggestion-panel h4 {
+    color: #667eea;
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.suggestion-panel p {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.suggestion-action {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.suggestion-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.suggestion-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.suggestion-btn.secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   CONVERSION TEMPLATES
+   ============================================ */
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.template-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.template-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #667eea;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.template-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: white;
+}
+
+.template-card p {
+    margin: 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.template-badge {
+    display: inline-block;
+    background: rgba(102, 126, 234, 0.3);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+/* Mobile template cards */
+@media (max-width: 768px) {
+    .template-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .template-card {
+        padding: 12px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .card {
+        border: 2px solid white;
+    }
+
+    .format-btn {
+        border: 2px solid currentColor;
+    }
+}

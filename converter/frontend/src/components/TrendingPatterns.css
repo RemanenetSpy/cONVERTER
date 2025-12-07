@@ -1,0 +1,483 @@
+/* ============================================
+   2024-2025 TRENDING UI/UX PATTERNS
+   ============================================ */
+
+/* 1. BENTO GRID LAYOUT (Apple-style) */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.bento-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.bento-card:hover::before {
+    transform: scaleX(1);
+}
+
+.bento-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Large feature card */
+.bento-card.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Medium card */
+.bento-card.medium {
+    grid-column: span 2;
+}
+
+/* 2. NEUMORPHISM (SOFT UI) */
+.neumorphic {
+    background: #e0e5ec;
+    border-radius: 20px;
+    box-shadow:
+        9px 9px 16px rgba(163, 177, 198, 0.6),
+        -9px -9px 16px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.neumorphic:hover {
+    box-shadow:
+        6px 6px 12px rgba(163, 177, 198, 0.6),
+        -6px -6px 12px rgba(255, 255, 255, 0.5);
+}
+
+.neumorphic-pressed {
+    box-shadow:
+        inset 4px 4px 8px rgba(163, 177, 198, 0.6),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Dark mode neumorphism */
+body.dark-mode .neumorphic {
+    background: #2d3748;
+    box-shadow:
+        9px 9px 16px rgba(0, 0, 0, 0.4),
+        -9px -9px 16px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .neumorphic:hover {
+    box-shadow:
+        6px 6px 12px rgba(0, 0, 0, 0.4),
+        -6px -6px 12px rgba(255, 255, 255, 0.05);
+}
+
+/* 3. ADVANCED MICRO-INTERACTIONS */
+
+/* Button ripple effect */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Magnetic button effect */
+.magnetic-btn {
+    transition: transform 0.2s ease;
+}
+
+.magnetic-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Elastic animation */
+@keyframes elastic {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.25);
+    }
+
+    40% {
+        transform: scale(0.75);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    65% {
+        transform: scale(0.95);
+    }
+
+    75% {
+        transform: scale(1.05);
+    }
+}
+
+.elastic {
+    animation: elastic 0.8s;
+}
+
+/* 4. GLASSMORPHISM 2.0 (Enhanced) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 48px 0 rgba(31, 38, 135, 0.5),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* 5. ANIMATED GRADIENTS */
+.gradient-animated {
+    background: linear-gradient(-45deg,
+            #667eea,
+            #764ba2,
+            #f093fb,
+            #f5576c);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 6. MORPHING SHAPES */
+.morph-shape {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph 8s ease-in-out infinite;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+@keyframes morph {
+
+    0%,
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+}
+
+/* 7. PARALLAX SCROLL EFFECT */
+.parallax-layer {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parallax-layer.slow {
+    transform: translateY(calc(var(--scroll) * 0.5px));
+}
+
+.parallax-layer.medium {
+    transform: translateY(calc(var(--scroll) * 0.3px));
+}
+
+.parallax-layer.fast {
+    transform: translateY(calc(var(--scroll) * 0.1px));
+}
+
+/* 8. CURSOR TRAIL EFFECT */
+.cursor-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.5), transparent);
+    pointer-events: none;
+    z-index: 9999;
+    animation: cursorFade 1s ease-out forwards;
+}
+
+@keyframes cursorFade {
+    to {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* 9. CARD STACK EFFECT */
+.card-stack {
+    position: relative;
+}
+
+.card-stack .card:nth-child(1) {
+    transform: translateY(0) scale(1);
+    z-index: 3;
+}
+
+.card-stack .card:nth-child(2) {
+    transform: translateY(8px) scale(0.95);
+    z-index: 2;
+    opacity: 0.8;
+}
+
+.card-stack .card:nth-child(3) {
+    transform: translateY(16px) scale(0.9);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* 10. SKELETON LOADING (Modern) */
+.skeleton {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: 8px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* 11. FLOATING ACTION BUTTON (FAB) with Tooltip */
+.fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+.fab:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.6);
+}
+
+.fab::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-size: 14px;
+}
+
+.fab:hover::before {
+    opacity: 1;
+}
+
+/* 12. SCROLL PROGRESS INDICATOR */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    transform-origin: left;
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+}
+
+/* 13. TOAST NOTIFICATIONS (Modern) */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: toastSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    z-index: 10000;
+}
+
+@keyframes toastSlideIn {
+    to {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.toast.success {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: #1a1a1a;
+}
+
+.toast.error {
+    background: linear-gradient(135deg, #f5576c, #f093fb);
+}
+
+.toast.info {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* 14. BADGE ANIMATIONS */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 8px rgba(102, 126, 234, 0);
+    }
+}
+
+/* 15. SPLIT SCREEN EFFECT */
+.split-screen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+.split-screen .left {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.split-screen .right {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Mobile optimizations for trending patterns */
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .bento-card.large,
+    .bento-card.medium {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .fab {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .split-screen {
+        grid-template-columns: 1fr;
+    }
+}
