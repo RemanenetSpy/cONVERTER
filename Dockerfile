@@ -6,7 +6,7 @@ WORKDIR /build_src
 # Copy everything to ensure we have the directories
 COPY . .
 WORKDIR /build_src/converter/frontend
-RUN npm ci
+RUN npm install
 RUN npm run build
 
 # ==========================================
