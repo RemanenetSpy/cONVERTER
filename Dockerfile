@@ -58,6 +58,7 @@ RUN pip install opencv-python-headless
 RUN pip install pydub
 RUN pip install python-docx
 RUN pip install pdf2docx
+RUN pip install scikit-image
 
 # Complex libs last
 RUN pip install ocrmypdf
