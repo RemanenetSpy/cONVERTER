@@ -28,12 +28,24 @@ from core.audio_converter import AudioConverter
 from core.archive_converter import ArchiveConverter
 from core.quality_gate import QualityGate
 
-# Initialize Flask app
-app = Flask(__name__)
+# Initialize Flask app (Static folder pointing to React build)
+app = Flask(__name__, static_folder="frontend_build", static_url_path="/")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Serve React Frontend
+@app.route("/")
+def index():
+    return send_file(os.path.join(app.static_folder, "index.html"))
+
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve_react(path):
+    if path and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_file(os.path.join(app.static_folder, path))
+    return send_file(os.path.join(app.static_folder, "index.html"))
 
 # CORS: allow origins via env var or default to wildcard for dev
 allowed_origins = os.getenv("ALLOWED_ORIGINS", "*")
