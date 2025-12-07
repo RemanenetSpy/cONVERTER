@@ -37,6 +37,8 @@ RUN apt-get update && apt-get install -y \
     unpaper \
     libgl1 \
     libglib2.0-0 \
+    libcairo2-dev \
+    cmake \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy backend requirements
