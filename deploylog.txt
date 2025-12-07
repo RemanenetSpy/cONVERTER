@@ -1,50 +1,50 @@
-2025-12-07T20:49:44.882075605Z #15 0.630 npm error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
-2025-12-07T20:49:44.882078935Z #15 0.630 npm error later to generate a package-lock.json file, then try again.
-2025-12-07T20:49:44.882082055Z #15 0.630 npm error
-2025-12-07T20:49:44.882084856Z #15 0.630 npm error Clean install a project
-2025-12-07T20:49:44.882087536Z #15 0.630 npm error
-2025-12-07T20:49:44.882090256Z #15 0.630 npm error Usage:
-2025-12-07T20:49:44.882092976Z #15 0.630 npm error npm ci
-2025-12-07T20:49:44.882097276Z #15 0.630 npm error
-2025-12-07T20:49:44.882100206Z #15 0.630 npm error Options:
-2025-12-07T20:49:44.882102946Z #15 0.630 npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
-2025-12-07T20:49:44.882106276Z #15 0.630 npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
-2025-12-07T20:49:44.882117387Z #15 0.630 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
-2025-12-07T20:49:44.882119256Z #15 0.630 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
-2025-12-07T20:49:44.882121737Z #15 0.630 npm error [--no-bin-links] [--no-fund] [--dry-run]
-2025-12-07T20:49:44.882123437Z #15 0.630 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
-2025-12-07T20:49:44.882125857Z #15 0.630 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
-2025-12-07T20:49:44.882130407Z #15 0.630 npm error
-2025-12-07T20:49:44.882134347Z #15 0.630 npm error aliases: clean-install, ic, install-clean, isntall-clean
-2025-12-07T20:49:44.882138057Z #15 0.630 npm error
-2025-12-07T20:49:44.882141387Z #15 0.630 npm error Run "npm help ci" for more info
-2025-12-07T20:49:44.882145637Z #15 0.632 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-07T20_49_44_252Z-debug-0.log
-2025-12-07T20:49:44.882149277Z #15 ERROR: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
-2025-12-07T20:49:44.980337852Z 
-2025-12-07T20:49:44.980365123Z #14 [stage-1  2/24] RUN apt-get update && apt-get install -y     libreoffice-writer     libreoffice-calc     libreoffice-java-common     ffmpeg     tesseract-ocr     tesseract-ocr-eng     tesseract-ocr-deu     tesseract-ocr-fra     tesseract-ocr-spa     default-jre     ghostscript     libjpeg-dev     zlib1g-dev     libpng-dev     libxml2-dev     libxslt1-dev     libffi-dev     python3-dev     build-essential     libfreetype6-dev     gcc     g++     make     qpdf     pkg-config     unpaper     libgl1     libglib2.0-0     libcairo2-dev     cmake     && rm -rf /var/lib/apt/lists/*
-2025-12-07T20:49:44.980369063Z #14 0.845 Fetched 9988 kB in 1s (13.2 MB/s)
-2025-12-07T20:49:45.449522433Z #14 0.845 Reading package lists...
-2025-12-07T20:49:45.531646904Z #14 CANCELED
-2025-12-07T20:49:45.531665885Z ------
-2025-12-07T20:49:45.531672915Z  > [frontend_build 5/6] RUN npm ci:
-2025-12-07T20:49:45.531679905Z 0.630 npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
-2025-12-07T20:49:45.531685645Z 0.630 npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
-2025-12-07T20:49:45.531691925Z 0.630 npm error [--no-bin-links] [--no-fund] [--dry-run]
-2025-12-07T20:49:45.531698216Z 0.630 npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
-2025-12-07T20:49:45.531702946Z 0.630 npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
-2025-12-07T20:49:45.531706526Z 0.630 npm error
-2025-12-07T20:49:45.531710116Z 0.630 npm error aliases: clean-install, ic, install-clean, isntall-clean
-2025-12-07T20:49:45.531713696Z 0.630 npm error
-2025-12-07T20:49:45.531717266Z 0.630 npm error Run "npm help ci" for more info
-2025-12-07T20:49:45.531721306Z 0.632 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-07T20_49_44_252Z-debug-0.log
-2025-12-07T20:49:45.531724886Z ------
-2025-12-07T20:49:45.532424875Z Dockerfile:9
-2025-12-07T20:49:45.532436995Z --------------------
-2025-12-07T20:49:45.532441425Z    7 |     COPY . .
-2025-12-07T20:49:45.532445465Z    8 |     WORKDIR /build_src/converter/frontend
-2025-12-07T20:49:45.532449515Z    9 | >>> RUN npm ci
-2025-12-07T20:49:45.532453905Z   10 |     RUN npm run build
-2025-12-07T20:49:45.532458305Z   11 |     
-2025-12-07T20:49:45.532462306Z --------------------
-2025-12-07T20:49:45.532466996Z error: failed to solve: process "/bin/sh -c npm ci" did not complete successfully: exit code: 1
-2025-12-07T20:49:45.550068371Z error: exit status 1
+2025-12-07T21:03:58.482088063Z #15 227.7 Adding debian:USERTrust_ECC_Certification_Authority.pem
+2025-12-07T21:03:58.482090614Z #15 227.7 Adding debian:USERTrust_RSA_Certification_Authority.pem
+2025-12-07T21:03:58.482093204Z #15 227.7 Adding debian:XRamp_Global_CA_Root.pem
+2025-12-07T21:03:58.482095804Z #15 227.7 Adding debian:certSIGN_ROOT_CA.pem
+2025-12-07T21:03:58.482098324Z #15 227.7 Adding debian:certSIGN_Root_CA_G2.pem
+2025-12-07T21:03:58.482101114Z #15 227.7 Adding debian:e-Szigno_Root_CA_2017.pem
+2025-12-07T21:03:58.482103704Z #15 227.7 Adding debian:ePKI_Root_Certification_Authority.pem
+2025-12-07T21:03:58.482108274Z #15 227.7 Adding debian:emSign_ECC_Root_CA_-_C3.pem
+2025-12-07T21:03:58.482110914Z #15 227.7 Adding debian:emSign_ECC_Root_CA_-_G3.pem
+2025-12-07T21:03:58.482113574Z #15 227.7 Adding debian:emSign_Root_CA_-_C1.pem
+2025-12-07T21:03:58.482116394Z #15 227.7 Adding debian:emSign_Root_CA_-_G1.pem
+2025-12-07T21:03:58.482118924Z #15 227.7 Adding debian:vTrus_ECC_Root_CA.pem
+2025-12-07T21:03:58.482121504Z #15 227.7 Adding debian:vTrus_Root_CA.pem
+2025-12-07T21:03:58.482124495Z #15 227.7 done.
+2025-12-07T21:03:58.482137955Z #15 227.7 Setting up openjdk-21-jre:amd64 (21.0.9+10-1~deb13u1) ...
+2025-12-07T21:03:58.482140905Z #15 227.8 Setting up default-jre-headless (2:1.21-76) ...
+2025-12-07T21:03:58.618056719Z #15 227.8 Setting up default-jre (2:1.21-76) ...
+2025-12-07T21:03:58.618073849Z #15 227.8 Processing triggers for dictionaries-common (1.30.10) ...
+2025-12-07T21:03:58.61807792Z #15 227.9 debconf: unable to initialize frontend: Dialog
+2025-12-07T21:03:58.618080209Z #15 227.9 debconf: (TERM is not set, so the dialog frontend is not usable.)
+2025-12-07T21:03:58.61808236Z #15 227.9 debconf: falling back to frontend: Readline
+2025-12-07T21:03:58.764506498Z #15 227.9 debconf: unable to initialize frontend: Readline
+2025-12-07T21:03:58.764718533Z #15 227.9 debconf: (This frontend requires a controlling tty.)
+2025-12-07T21:03:58.764723353Z #15 227.9 debconf: falling back to frontend: Teletype
+2025-12-07T21:03:58.764727153Z #15 227.9 debconf: unable to initialize frontend: Teletype
+2025-12-07T21:03:58.764730724Z #15 227.9 debconf: (This frontend requires a controlling tty.)
+2025-12-07T21:03:58.764732913Z #15 227.9 debconf: falling back to frontend: Noninteractive
+2025-12-07T21:03:58.764736814Z #15 228.0 Processing triggers for libgdk-pixbuf-2.0-0:amd64 (2.42.12+dfsg-4) ...
+2025-12-07T21:04:02.625504953Z #15 CANCELED
+2025-12-07T21:04:02.69557463Z ------
+2025-12-07T21:04:02.695598451Z  > [frontend_build 5/6] RUN npm install:
+2025-12-07T21:04:02.695604791Z 1.401 npm error code ENOENT
+2025-12-07T21:04:02.695610301Z 1.401 npm error syscall open
+2025-12-07T21:04:02.695615791Z 1.401 npm error path /build_src/converter/frontend/package.json
+2025-12-07T21:04:02.695621801Z 1.401 npm error errno -2
+2025-12-07T21:04:02.695628562Z 1.401 npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/build_src/converter/frontend/package.json'
+2025-12-07T21:04:02.695632611Z 1.401 npm error enoent This is related to npm not being able to find a file.
+2025-12-07T21:04:02.695636122Z 1.401 npm error enoent
+2025-12-07T21:04:02.695640752Z 1.401 npm error A complete log of this run can be found in: /root/.npm/_logs/2025-12-07T21_00_10_497Z-debug-0.log
+2025-12-07T21:04:02.695644792Z ------
+2025-12-07T21:04:02.696372611Z Dockerfile:9
+2025-12-07T21:04:02.696401071Z --------------------
+2025-12-07T21:04:02.696405542Z    7 |     COPY . .
+2025-12-07T21:04:02.696409632Z    8 |     WORKDIR /build_src/converter/frontend
+2025-12-07T21:04:02.696413852Z    9 | >>> RUN npm install
+2025-12-07T21:04:02.696417612Z   10 |     RUN npm run build
+2025-12-07T21:04:02.696423382Z   11 |     
+2025-12-07T21:04:02.696427262Z --------------------
+2025-12-07T21:04:02.696431532Z error: failed to solve: process "/bin/sh -c npm install" did not complete successfully: exit code: 254
+2025-12-07T21:04:02.73621424Z error: exit status 1

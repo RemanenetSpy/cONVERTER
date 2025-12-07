@@ -3,8 +3,9 @@
 # ==========================================
 FROM node:18-alpine as frontend_build
 WORKDIR /build_src
-# Copy everything to ensure we have the directories
+WORKDIR /build_src
 COPY . .
+# Explicitly verify directory structure before install
 WORKDIR /build_src/converter/frontend
 RUN npm install
 RUN npm run build
