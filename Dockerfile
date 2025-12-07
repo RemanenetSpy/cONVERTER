@@ -1,6 +1,59 @@
-# Use official Python runtime
+# ==========================================
+# Stage 1: Build React Frontend
+# ==========================================
+FROM node:18-alpine as frontend_build
+WORKDIR /frontend
+COPY converter/frontend/package.json converter/frontend/package-lock.json ./
+RUN npm ci
+COPY converter/frontend/ ./
+RUN npm run build
+
+# ==========================================
+# Stage 2: Python Backend
+# ==========================================
 FROM python:3.9-slim
 
+# Install system dependencies (restoring the critical list)
+RUN apt-get update && apt-get install -y \
+    libreoffice-writer \
+    libreoffice-calc \
+    libreoffice-java-common \
+    ffmpeg \
+    tesseract-ocr \
+    tesseract-ocr-eng \
+    tesseract-ocr-deu \
+    tesseract-ocr-fra \
+    tesseract-ocr-spa \
+    default-jre \
+    ghostscript \
+    libjpeg-dev \
+    zlib1g-dev \
+    libpng-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    libffi-dev \
+    python3-dev \
+    build-essential \
+    libfreetype6-dev \
+    gcc \
+    g++ \
+    make \
+    qpdf \
+    pkg-config \
+    unpaper \
+    libgl1 \
+    libglib2.0-0 \
+    libcairo2-dev \
+    cmake \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Upgrade pip and build tools
+RUN pip install --upgrade pip setuptools wheel
+
+# Install dependencies sequentially to debug failures and avoid OOM
+RUN pip install Flask Flask-Cors Werkzeug gunicorn Flask-Limiter
 RUN pip install pandas openpyxl psutil
 RUN pip install Pillow
 RUN pip install reportlab

@@ -1,50 +1,38 @@
-2025-12-07T19:58:59.571976843Z #24 1.214 Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.9/site-packages (from markdown-it-py>=2.2.0->rich>=13->ocrmypdf) (0.1.2)
-2025-12-07T19:58:59.817126938Z #24 1.218 Requirement already satisfied: wrapt<3,>=1.10 in /usr/local/lib/python3.9/site-packages (from Deprecated->pikepdf>=8.7.1->ocrmypdf) (2.0.1)
-2025-12-07T19:58:59.817142508Z #24 1.226 Downloading ocrmypdf-15.4.4-py39-none-any.whl (152 kB)
-2025-12-07T19:58:59.817146188Z #24 1.244 Downloading deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
-2025-12-07T19:58:59.817148048Z #24 1.260 Downloading img2pdf-0.6.3-py3-none-any.whl (49 kB)
-2025-12-07T19:58:59.817151448Z #24 1.277 Downloading pikepdf-9.11.0-cp39-cp39-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (2.6 MB)
-2025-12-07T19:58:59.817154449Z #24 1.310    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 79.5 MB/s  0:00:00
-2025-12-07T19:58:59.817156339Z #24 1.313 Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
-2025-12-07T19:58:59.913362498Z #24 1.559 Installing collected packages: pluggy, deprecation, pikepdf, img2pdf, ocrmypdf
-2025-12-07T19:59:00.163567234Z #24 1.810 
-2025-12-07T19:59:00.331763102Z #24 1.827 Successfully installed deprecation-2.1.0 img2pdf-0.6.3 ocrmypdf-15.4.4 pikepdf-9.11.0 pluggy-1.6.0
-2025-12-07T19:59:00.331784263Z #24 1.827 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
-2025-12-07T19:59:00.384758214Z #24 DONE 2.0s
-2025-12-07T19:59:00.517368362Z 
-2025-12-07T19:59:00.517391832Z #25 [20/21] COPY backend-python/ .
-2025-12-07T19:59:00.517396382Z #25 DONE 0.1s
-2025-12-07T19:59:00.517400102Z 
-2025-12-07T19:59:00.517405413Z #26 [21/21] RUN mkdir -p uploads
-2025-12-07T19:59:00.517409273Z #26 DONE 0.1s
-2025-12-07T19:59:00.670812046Z 
-2025-12-07T19:59:00.670847767Z #27 exporting to docker image format
-2025-12-07T19:59:00.670859718Z #27 exporting layers
-2025-12-07T20:00:19.286498987Z #27 exporting layers 78.8s done
-2025-12-07T20:00:19.465883519Z #27 exporting manifest sha256:9ef922e3dd83e3438298b3440f5bb24bf320bc8272c027fbf1857f9fedc5ca8e 0.0s done
-2025-12-07T20:00:19.4659071Z #27 exporting config sha256:fff45c60683c74413cf8d288e4f5ba2ff7fd9cc6428b7825501edc1e9eba656b 0.0s done
-2025-12-07T20:00:26.655384514Z #27 DONE 86.1s
-2025-12-07T20:00:26.655403715Z 
-2025-12-07T20:00:26.655407905Z #28 exporting cache to client directory
-2025-12-07T20:00:26.655411565Z #28 preparing build cache for export
-2025-12-07T20:00:45.529947524Z #28 writing cache image manifest sha256:3e5d3646bd0a1653548848062d21f9488baa76ff7d6071970d3baf4ea4dc6af8 0.0s done
-2025-12-07T20:00:45.529966915Z #28 DONE 18.8s
-2025-12-07T20:00:46.482855301Z Pushing image to registry...
-2025-12-07T20:01:12.532720637Z Upload succeeded
-2025-12-07T20:01:27.445774809Z ==> Deploying...
-2025-12-07T20:02:30.536909671Z Traceback (most recent call last):
-2025-12-07T20:02:30.537516604Z   File "/app/app.py", line 28, in <module>
-2025-12-07T20:02:30.537525234Z     from core.archive_converter import ArchiveConverter
-2025-12-07T20:02:30.537527994Z   File "/app/core/archive_converter.py", line 9, in <module>
-2025-12-07T20:02:30.537530474Z     import py7zr
-2025-12-07T20:02:30.537532804Z ModuleNotFoundError: No module named 'py7zr'
-2025-12-07T20:02:32.280282676Z ==> No open ports detected, continuing to scan...
-2025-12-07T20:02:32.447578831Z ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
-2025-12-07T20:02:34.430002767Z ==> Exited with status 1
-2025-12-07T20:02:34.49566887Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
-2025-12-07T20:02:42.904454671Z Traceback (most recent call last):
-2025-12-07T20:02:42.904492822Z   File "/app/app.py", line 28, in <module>
-2025-12-07T20:02:42.904516872Z     from core.archive_converter import ArchiveConverter
-2025-12-07T20:02:42.904521292Z   File "/app/core/archive_converter.py", line 9, in <module>
-2025-12-07T20:02:42.904616715Z     import py7zr
-2025-12-07T20:02:42.904630505Z ModuleNotFoundError: No module named 'py7zr'
+2025-12-07T20:41:52.36723939Z ==> Downloading cache...
+2025-12-07T20:41:52.412233523Z ==> Cloning from https://github.com/RemanenetSpy/cONVERTER
+2025-12-07T20:41:53.205849875Z ==> Checking out commit b8be81547ea3989c4db50872e365a4217e02bfc9 in branch main
+2025-12-07T20:42:00.981344539Z ==> Downloaded 1.2GB in 7s. Extraction took 1s.
+2025-12-07T20:42:28.459772844Z #1 [internal] load build definition from Dockerfile
+2025-12-07T20:42:28.459802755Z #1 transferring dockerfile: 816B done
+2025-12-07T20:42:28.459805725Z #1 DONE 0.0s
+2025-12-07T20:42:28.459808015Z 
+2025-12-07T20:42:28.459810935Z #2 [internal] load metadata for docker.io/library/python:3.9-slim
+2025-12-07T20:42:28.915015305Z #2 ...
+2025-12-07T20:42:28.915029296Z 
+2025-12-07T20:42:28.915032416Z #3 [auth] library/frontend_build:pull render-prod/docker-mirror-repository/library/frontend_build:pull token for us-west1-docker.pkg.dev
+2025-12-07T20:42:28.915035456Z #3 DONE 0.0s
+2025-12-07T20:42:28.915037086Z 
+2025-12-07T20:42:28.915039166Z #4 [auth] library/python:pull render-prod/docker-mirror-repository/library/python:pull token for us-west1-docker.pkg.dev
+2025-12-07T20:42:28.915040966Z #4 DONE 0.0s
+2025-12-07T20:42:29.065241762Z 
+2025-12-07T20:42:29.065268093Z #5 [internal] load metadata for docker.io/library/frontend_build:latest
+2025-12-07T20:42:30.046508587Z #5 ERROR: docker.io/library/frontend_build:latest: not found
+2025-12-07T20:42:30.046529197Z 
+2025-12-07T20:42:30.046534878Z #6 [auth] library/frontend_build:pull token for registry-1.docker.io
+2025-12-07T20:42:30.046539678Z #6 DONE 0.0s
+2025-12-07T20:42:30.046543598Z 
+2025-12-07T20:42:30.046547988Z #2 [internal] load metadata for docker.io/library/python:3.9-slim
+2025-12-07T20:42:30.046552998Z #2 CANCELED
+2025-12-07T20:42:30.046557288Z ------
+2025-12-07T20:42:30.046560198Z  > [internal] load metadata for docker.io/library/frontend_build:latest:
+2025-12-07T20:42:30.046563008Z ------
+2025-12-07T20:42:30.048093542Z Dockerfile:27
+2025-12-07T20:42:30.048109292Z --------------------
+2025-12-07T20:42:30.048113792Z   25 |     
+2025-12-07T20:42:30.048118502Z   26 |     # Copy Frontend Build from Stage 1
+2025-12-07T20:42:30.048123513Z   27 | >>> COPY --from=frontend_build /frontend/build ./frontend_build
+2025-12-07T20:42:30.048127433Z   28 |     
+2025-12-07T20:42:30.048142843Z   29 |     # Create uploads directory
+2025-12-07T20:42:30.048147103Z --------------------
+2025-12-07T20:42:30.048151613Z error: failed to solve: frontend_build: failed to resolve source metadata for docker.io/library/frontend_build:latest: docker.io/library/frontend_build:latest: not found
+2025-12-07T20:42:30.062242444Z error: exit status 1
