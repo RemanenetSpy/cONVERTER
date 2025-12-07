@@ -48,7 +48,7 @@ COPY backend-python/requirements.txt .
 RUN pip install --upgrade pip setuptools wheel
 
 # Install dependencies sequentially to debug failures and avoid OOM
-RUN pip install Flask Flask-Cors Werkzeug gunicorn
+RUN pip install Flask Flask-Cors Werkzeug gunicorn Flask-Limiter
 RUN pip install pandas openpyxl psutil
 RUN pip install Pillow
 RUN pip install reportlab
