@@ -61,6 +61,9 @@ RUN pip install pdf2docx
 RUN pip install scikit-image
 RUN pip install PyPDF2
 RUN pip install python-pptx
+RUN pip install py7zr
+RUN pip install cairosvg
+RUN pip install pillow-heif
 
 # Complex libs last
 RUN pip install ocrmypdf
