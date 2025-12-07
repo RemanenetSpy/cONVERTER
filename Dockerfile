@@ -44,7 +44,21 @@ COPY backend-python/requirements.txt .
 
 # Upgrade pip and build tools
 RUN pip install --upgrade pip setuptools wheel
-RUN pip install --no-cache-dir -r requirements.txt
+
+# Install dependencies sequentially to debug failures and avoid OOM
+RUN pip install Flask Flask-Cors Werkzeug gunicorn
+RUN pip install pandas openpyxl psutil
+RUN pip install Pillow
+RUN pip install reportlab
+RUN pip install xhtml2pdf
+RUN pip install pdfplumber
+RUN pip install opencv-python-headless
+RUN pip install pydub
+RUN pip install python-docx
+RUN pip install pdf2docx
+
+# Complex libs last
+RUN pip install ocrmypdf
 
 # Copy backend code
 COPY backend-python/ .
