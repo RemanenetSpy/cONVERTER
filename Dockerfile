@@ -29,13 +29,16 @@ RUN apt-get update && apt-get install -y \
     make \
     qpdf \
     pkg-config \
+    unpaper \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy backend requirements
 COPY backend-python/requirements.txt .
 
-# Upgrade pip and install Python dependencies
-RUN pip install --upgrade pip
+# Upgrade pip and build tools
+RUN pip install --upgrade pip setuptools wheel
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy backend code
