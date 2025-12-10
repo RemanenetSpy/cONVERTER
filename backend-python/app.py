@@ -108,6 +108,50 @@ def validate_file_size(filename, file_size):
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
+# ----------------------------------------------------
+# Privacy: Auto-Cleanup Background Task
+# ----------------------------------------------------
+import threading
+import time
+
+def cleanup_files():
+    """Delete files older than 30 minutes to ensure privacy"""
+    while True:
+        try:
+            logger.info("🧹 Privacy Sweep: Cleaning up old files...")
+            cutoff = time.time() - (30 * 60) # 30 minutes
+            
+            # Clean outputs
+            for filename in os.listdir(OUTPUT_FOLDER):
+                filepath = os.path.join(OUTPUT_FOLDER, filename)
+                if os.path.isfile(filepath):
+                    if os.path.getmtime(filepath) < cutoff:
+                        try:
+                            os.remove(filepath)
+                            logger.info(f"Deleted old file: {filename}")
+                        except Exception:
+                            pass
+            
+            # Clean uploads (if any persisted, though usually tempfile handles this)
+            for filename in os.listdir(UPLOAD_FOLDER):
+                filepath = os.path.join(UPLOAD_FOLDER, filename)
+                if os.path.isfile(filepath):
+                    if os.path.getmtime(filepath) < cutoff:
+                        try:
+                            os.remove(filepath)
+                            logger.info(f"Deleted old upload: {filename}")
+                        except Exception:
+                            pass
+
+        except Exception as e:
+            logger.error(f"Cleanup task error: {e}")
+        
+        time.sleep(900) # Run every 15 minutes
+
+# Start cleanup thread
+cleanup_thread = threading.Thread(target=cleanup_files, daemon=True)
+cleanup_thread.start()
+
 # Initialize conversion engine
 engine = ConversionEngine(
     output_dir=OUTPUT_FOLDER,
