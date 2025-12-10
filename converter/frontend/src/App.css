@@ -33,7 +33,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
   pointer-events: none;
@@ -59,6 +59,7 @@
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -74,91 +75,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.header-content p {
-  font-size: 1.2rem;
-  opacity: 0.95;
-  letter-spacing: 2px;
-  font-weight: 300;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.app-main {
-  margin-bottom: 50px;
-  animation: fadeIn 1s ease-out 0.2s both;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 28px;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  animation: slideUp 0.6s ease-out both;
-}
-
-.column:nth-child(1) { animation-delay: 0.1s; }
-.column:nth-child(2) { animation-delay: 0.2s; }
-.column:nth-child(3) { animation-delay: 0.3s; }
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.column.full-width {
-  grid-column: 1 / -1;
-}
-
-.app-footer {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-  padding: 30px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  margin-top: 50px;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-}
-
-.app-footer p {
-  margin: 0;
-}
-
-/* Glass morphism card styles */
-.card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: var(--shadow-lg);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Button styles */
@@ -220,8 +136,13 @@ button:disabled {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive Design */
@@ -271,6 +192,7 @@ button:disabled {
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

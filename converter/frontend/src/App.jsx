@@ -9,8 +9,10 @@ import ConversionPanel from './components/ConversionPanel';
 import HistoryPanel from './components/HistoryPanel';
 import HealthCheck from './components/HealthCheck';
 import FeedbackWidget from './components/FeedbackWidget';
+import HelpModal from './components/HelpModal';
 import { getFormatIcon } from './utils/formatUtils';
 import { getSmartSuggestion, detectUseCase, getApplicableTemplates } from './utils/smartSuggestions';
+import { HelpCircle } from 'lucide-react';
 
 // In production (Render), we serve frontend from same origin, so use relative path '/api'
 // In development, we use localhost:5000
@@ -26,6 +28,7 @@ function App() {
   const [supportedFormats, setSupportedFormats] = useState({});
   const [progress, setProgress] = useState(0);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   // Load conversions from localStorage on mount
   useEffect(() => {
@@ -285,7 +288,16 @@ function App() {
             <h1>🔄 File Converter Pro</h1>
             <p>Transparent • Reproducible • Privacy-First</p>
           </div>
+          <button
+            className="help-btn"
+            onClick={() => setShowHelp(true)}
+            aria-label="Open Help Guide"
+          >
+            <HelpCircle size={20} /> Guide
+          </button>
         </header>
+
+        <HelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
 
         <main className="app-main">
           <div className="grid">
