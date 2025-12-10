@@ -13,6 +13,7 @@ import HelpModal from './components/HelpModal';
 import { getFormatIcon } from './utils/formatUtils';
 import { getSmartSuggestion, detectUseCase, getApplicableTemplates } from './utils/smartSuggestions';
 import { HelpCircle } from 'lucide-react';
+import Cube3D from './components/Cube3D';
 
 // In production (Render), we serve frontend from same origin, so use relative path '/api'
 // In development, we use localhost:5000
@@ -283,18 +284,26 @@ function App() {
       )}
 
       <div className="app-container">
-        <header className="app-header">
-          <div className="header-content">
-            <h1>🔄 File Converter Pro</h1>
-            <p>Transparent • Reproducible • Privacy-First</p>
+
+        {/* Fixed Guide Button */}
+        <button
+          className="help-btn-fixed"
+          onClick={() => setShowHelp(true)}
+          aria-label="Open Guide"
+        >
+          <HelpCircle size={20} /> Guide
+        </button>
+
+        {/* Hero Section */}
+        <header className="app-hero">
+          <Cube3D />
+          <h1 className="hero-title">File Converter Pro</h1>
+          <p className="hero-subtitle">Transparent • Reproducible • Privacy-First</p>
+          <div className="hero-badges">
+            <span className="badge">🔒 Secure</span>
+            <span className="badge">⚡ Fast</span>
+            <span className="badge">📜 Auditable</span>
           </div>
-          <button
-            className="help-btn"
-            onClick={() => setShowHelp(true)}
-            aria-label="Open Help Guide"
-          >
-            <HelpCircle size={20} /> Guide
-          </button>
         </header>
 
         <HelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
@@ -330,8 +339,25 @@ function App() {
           </div>
         </main>
 
-        <footer className="app-footer">
-          <p>🔒 Your files are processed securely • Quality guaranteed • Open source</p>
+        {/* Structured Footer */}
+        <footer className="app-footer-modern">
+          <div className="footer-content">
+            <div className="footer-col">
+              <h3>🔒 Privacy First</h3>
+              <p>Files are automatically deleted after 30 minutes. We never sell your data.</p>
+            </div>
+            <div className="footer-col">
+              <h3>⚡ Features</h3>
+              <p>Reproducible builds, audit trails, and format-perfect conversions.</p>
+            </div>
+            <div className="footer-col">
+              <h3>📜 Open Source</h3>
+              <p>Transparent code. Built for the community. © 2025 Converter Pro.</p>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>Quality Guaranteed • Secure Processing</p>
+          </div>
         </footer>
       </div>
 

@@ -33,6 +33,8 @@ function HealthCheck({ status }) {
   const statusInfo = getStatusInfo();
   const Icon = statusInfo.icon;
 
+  if (status === 'connected') return null;
+
   return (
     <div className={`health-check ${statusInfo.className}`}>
       <Icon size={16} color={statusInfo.color} />
