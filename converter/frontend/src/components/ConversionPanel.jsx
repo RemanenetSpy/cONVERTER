@@ -80,6 +80,40 @@ function ConversionPanel({ selectedFile, supportedFormats, onConvert, loading, p
     <div className="conversion-panel card">
       <h2>⚙️ {compressionMode ? 'Compress' : 'Convert'}</h2>
 
+      {/* Recipe Loader */}
+      <div className="recipe-loader">
+        <label htmlFor="recipe-upload" className="recipe-btn" title="Load settings from a previous recipe">
+          <Settings size={16} /> Load Recipe
+        </label>
+        <input
+          id="recipe-upload"
+          type="file"
+          accept=".json,.yaml,.yml"
+          style={{ display: 'none' }}
+          onChange={(e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              try {
+                const recipe = JSON.parse(event.target.result);
+                // Auto-configure UI from recipe
+                if (recipe.output && recipe.output.format) {
+                  setSelectedFormat(recipe.output.format);
+                  if (recipe.output.parameters && recipe.output.parameters.quality) {
+                    setQuality(recipe.output.parameters.quality);
+                  }
+                  alert(`✅ Recipe Loaded: Set format to ${recipe.output.format.toUpperCase()}`);
+                }
+              } catch (err) {
+                alert('❌ Invalid Recipe File');
+              }
+            };
+            reader.readAsText(file);
+          }}
+        />
+      </div>
+
       {supportsCompression && (
         <div className="mode-toggle">
           <button
