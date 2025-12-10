@@ -8,6 +8,7 @@ import FileUploader from './components/FileUploader';
 import ConversionPanel from './components/ConversionPanel';
 import HistoryPanel from './components/HistoryPanel';
 import HealthCheck from './components/HealthCheck';
+import FeedbackWidget from './components/FeedbackWidget';
 import { getFormatIcon } from './utils/formatUtils';
 import { getSmartSuggestion, detectUseCase, getApplicableTemplates } from './utils/smartSuggestions';
 
@@ -321,6 +322,8 @@ function App() {
           <p>🔒 Your files are processed securely • Quality guaranteed • Open source</p>
         </footer>
       </div>
+
+      <FeedbackWidget />
     </div>
   );
 }

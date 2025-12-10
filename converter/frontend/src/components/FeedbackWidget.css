@@ -1,0 +1,222 @@
+/* Feedback Widget Styles (Glassmorphism + Modern) */
+
+.feedback-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Floating Toggle Button */
+.feedback-toggle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feedback-toggle:hover {
+    transform: scale(1.1) rotate(6deg);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* Main Form Container */
+.feedback-form-container {
+    width: 320px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+}
+
+.dark-mode .feedback-form-container {
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Header */
+.feedback-header {
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.feedback-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.dark-mode .feedback-header h3 {
+    color: #e2e8f0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #a0aec0;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #4a5568;
+}
+
+/* Form Elements */
+.feedback-form-container form {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feedback-type-selector {
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.03);
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.dark-mode .feedback-type-selector {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.feedback-type-selector button {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 6px;
+    font-size: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #718096;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.dark-mode .feedback-type-selector button {
+    color: #a0aec0;
+}
+
+.feedback-type-selector button.active {
+    background: #fff;
+    color: #667eea;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .feedback-type-selector button.active {
+    background: #4a5568;
+    color: #fff;
+}
+
+textarea,
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+}
+
+.dark-mode textarea,
+.dark-mode input[type="email"] {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: white;
+}
+
+textarea:focus,
+input[type="email"]:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+/* Success State */
+.feedback-success {
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #4a5568;
+}
+
+.dark-mode .feedback-success {
+    color: #e2e8f0;
+}
+
+.error-msg {
+    color: #e53e3e;
+    font-size: 12px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

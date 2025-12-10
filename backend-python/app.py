@@ -27,6 +27,7 @@ from core.file_size_reducer import FileSizeReducer
 from core.audio_converter import AudioConverter
 from core.archive_converter import ArchiveConverter
 from core.quality_gate import QualityGate
+from core.feedback_manager import FeedbackManager
 
 # Initialize Flask app (Static folder pointing to React build)
 app = Flask(__name__, static_folder="frontend_build", static_url_path="/")
@@ -1143,6 +1144,25 @@ def server_error(error):
 @app.errorhandler(429)
 def rate_limit_handler(e):
     return jsonify({"error": "Rate limit exceeded"}), 429
+
+@app.route("/api/feedback", methods=["POST"])
+@limiter.limit("2 per hour")
+def submit_feedback():
+    """Submit user feedback/bug report"""
+    try:
+        data = request.json
+        if not data or not data.get("message"):
+            return jsonify({"error": "Message is required"}), 400
+            
+        # Add metadata headers
+        data["userAgent"] = request.headers.get("User-Agent")
+        
+        result = FeedbackManager.save_feedback(data)
+        return jsonify(result)
+        
+    except Exception as e:
+        logger.exception("Feedback submission failed")
+        return jsonify({"error": "Failed to save feedback"}), 500
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
