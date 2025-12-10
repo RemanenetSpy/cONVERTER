@@ -299,16 +299,12 @@ function App() {
           <Cube3D />
           <h1 className="hero-title">File Converter Pro</h1>
           <p className="hero-subtitle">Transparent • Reproducible • Privacy-First</p>
-          <div className="hero-badges">
-            <span className="badge">🔒 Secure</span>
-            <span className="badge">⚡ Fast</span>
-            <span className="badge">📜 Auditable</span>
-          </div>
         </header>
 
         <HelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />
 
         <main className="app-main">
+          {/* ... grid content ... */}
           <div className="grid">
             <div className="column">
               <FileUploader
@@ -339,24 +335,17 @@ function App() {
           </div>
         </main>
 
-        {/* Structured Footer */}
+        {/* Unified Modern Footer */}
         <footer className="app-footer-modern">
-          <div className="footer-content">
-            <div className="footer-col">
-              <h3>🔒 Privacy First</h3>
-              <p>Files are automatically deleted after 30 minutes. We never sell your data.</p>
-            </div>
-            <div className="footer-col">
-              <h3>⚡ Features</h3>
-              <p>Reproducible builds, audit trails, and format-perfect conversions.</p>
-            </div>
-            <div className="footer-col">
-              <h3>📜 Open Source</h3>
-              <p>Transparent code. Built for the community. © 2025 Converter Pro.</p>
-            </div>
+          <div className="footer-mission">
+            <p>
+              Engineered for data sovereignty. Open source, reproducible, and secure by design.
+              <br />
+              <span className="footer-sub">Your data never leaves your control.</span>
+            </p>
           </div>
           <div className="footer-bottom">
-            <p>Quality Guaranteed • Secure Processing</p>
+            <p>© 2025 Converter Pro • Quality Guaranteed</p>
           </div>
         </footer>
       </div>
