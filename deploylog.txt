@@ -1,50 +1,50 @@
-2025-12-07T22:19:14.27234504Z 
-2025-12-07T22:19:14.2723506Z #38 [stage-1 23/24] COPY --from=frontend_build /build_src/converter/frontend/build ./frontend_build
-2025-12-07T22:19:14.27235469Z #38 DONE 0.0s
-2025-12-07T22:19:14.2723581Z 
-2025-12-07T22:19:14.27237202Z #39 [stage-1 24/24] RUN mkdir -p uploads
-2025-12-07T22:19:14.27237477Z #39 DONE 0.1s
-2025-12-07T22:19:14.427467675Z 
-2025-12-07T22:19:14.427517526Z #40 exporting to docker image format
-2025-12-07T22:19:14.427525786Z #40 exporting layers
-2025-12-07T22:20:52.063617048Z #40 exporting layers 97.8s done
-2025-12-07T22:20:52.252258082Z #40 exporting manifest sha256:1eb9456801dd0431c3c8081ec12bcd1269afc7a1da2dfd4d89248d56f7bd8586 0.0s done
-2025-12-07T22:20:52.252281743Z #40 exporting config sha256:2ea4c5f421156f5813f46dd6ed97158c9772413a260bcc670121b7b447f40e07 0.0s done
-2025-12-07T22:21:01.372609854Z #40 DONE 107.1s
-2025-12-07T22:21:01.522961362Z 
-2025-12-07T22:21:01.555181508Z #41 exporting cache to client directory
-2025-12-07T22:21:01.555197989Z #41 preparing build cache for export
-2025-12-07T22:22:00.998670181Z #41 writing cache image manifest sha256:9a6ff9381773fd2954b010aca580831534158fbec75ff95782acc570459ad3bd 0.0s done
-2025-12-07T22:22:00.998691882Z #41 DONE 59.5s
-2025-12-07T22:22:02.625223679Z Pushing image to registry...
-2025-12-07T22:22:29.517512731Z Upload succeeded
-2025-12-07T22:25:12.307890534Z ==> Deploying...
-2025-12-07T22:26:19.77764377Z ==> No open ports detected, continuing to scan...
-2025-12-07T22:26:19.969843813Z ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
-2025-12-07T22:26:30.532699171Z /usr/local/lib/python3.9/site-packages/flask_limiter/extension.py:330: UserWarning: Using the in-memory storage for tracking rate limits as no storage was explicitly specified. This is not recommended for production use. See: https://flask-limiter.readthedocs.io#configuring-a-storage-backend for documentation about configuring the storage backend.
-2025-12-07T22:26:30.532751232Z   warnings.warn(
-2025-12-07T22:26:30.621860343Z ============================================================
-2025-12-07T22:26:30.621889913Z 🔄 Next-Gen File Converter API
-2025-12-07T22:26:30.621893463Z ============================================================
-2025-12-07T22:26:30.621896734Z Environment: development
-2025-12-07T22:26:30.621899123Z Server: http://localhost:10000
-2025-12-07T22:26:30.621902003Z Health Check: http://localhost:10000/api/health
-2025-12-07T22:26:30.621904284Z CORS Origins: *
-2025-12-07T22:26:30.621906674Z Daily Quota: 200MB per IP
-2025-12-07T22:26:30.621909384Z ============================================================
-2025-12-07T22:26:30.621911654Z  * Serving Flask app 'app'
-2025-12-07T22:26:30.622127348Z  * Debug mode: off
-2025-12-07T22:26:30.714851445Z [INFO] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
-2025-12-07T22:26:30.714871726Z  * Running on all addresses (0.0.0.0)
-2025-12-07T22:26:30.714895876Z  * Running on http://127.0.0.1:10000
-2025-12-07T22:26:30.714897856Z  * Running on http://10.16.16.35:10000
-2025-12-07T22:26:30.714899546Z [INFO] Press CTRL+C to quit
-2025-12-07T22:26:31.296813471Z [INFO] 127.0.0.1 - - [07/Dec/2025 22:26:31] "HEAD / HTTP/1.1" 200 -
-2025-12-07T22:26:32.998882859Z ==> Your service is live 🎉
-2025-12-07T22:26:33.092206152Z ==> 
-2025-12-07T22:26:33.175565436Z ==> ///////////////////////////////////////////////////////////
-2025-12-07T22:26:33.258693109Z ==> 
-2025-12-07T22:26:33.341815123Z ==> Available at your primary URL https://converter-lmxu.onrender.com
-2025-12-07T22:26:33.425799537Z ==> 
-2025-12-07T22:26:33.50961415Z ==> ///////////////////////////////////////////////////////////
-2025-12-07T22:26:35.258608488Z [INFO] 127.0.0.1 - - [07/Dec/2025 22:26:35] "GET / HTTP/1.1" 200 -
+2025-12-10T09:40:47.581908308Z #15 22.37 npm notice To update run: npm install -g npm@11.7.0
+2025-12-10T09:40:47.581910088Z #15 22.37 npm notice
+2025-12-10T09:41:13.253007575Z #15 DONE 48.2s
+2025-12-10T09:41:13.406131406Z 
+2025-12-10T09:41:13.406154987Z #16 [frontend_build 7/7] RUN npm run build
+2025-12-10T09:41:14.502847988Z #16 1.247 
+2025-12-10T09:41:14.502895849Z #16 1.247 > file-converter-ui@1.0.0 build
+2025-12-10T09:41:14.502903309Z #16 1.247 > react-scripts build
+2025-12-10T09:41:14.502909089Z #16 1.247 
+2025-12-10T09:41:16.128393205Z #16 2.873 Creating an optimized production build...
+2025-12-10T09:41:32.612363682Z #16 19.36 Failed to compile.
+2025-12-10T09:41:32.612384832Z #16 19.36 
+2025-12-10T09:41:32.805405992Z #16 19.36 [eslint] 
+2025-12-10T09:41:32.805426152Z #16 19.36 src/components/HelpModal.jsx
+2025-12-10T09:41:32.805433142Z #16 19.36   Line 120:29:  React Hook "useMemo" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+2025-12-10T09:41:32.805437712Z #16 19.36 
+2025-12-10T09:41:32.805442923Z #16 19.36 Search for the keywords to learn more about each error.
+2025-12-10T09:41:32.805447763Z #16 19.36 
+2025-12-10T09:41:32.805452543Z #16 19.36 
+2025-12-10T09:41:32.805457583Z #16 19.44 npm error Lifecycle script `build` failed with error:
+2025-12-10T09:41:32.805462573Z #16 19.44 npm error code 1
+2025-12-10T09:41:32.805466663Z #16 19.44 npm error path /build_src/converter/frontend
+2025-12-10T09:41:32.805470633Z #16 19.44 npm error workspace file-converter-ui@1.0.0
+2025-12-10T09:41:32.805474573Z #16 19.44 npm error location /build_src/converter/frontend
+2025-12-10T09:41:32.805478753Z #16 19.44 npm error command failed
+2025-12-10T09:41:32.805483233Z #16 19.44 npm error command sh -c react-scripts build
+2025-12-10T09:41:32.805488093Z #16 ERROR: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+2025-12-10T09:41:32.850083494Z ------
+2025-12-10T09:41:32.850324549Z  > [frontend_build 7/7] RUN npm run build:
+2025-12-10T09:41:32.850334299Z 19.36 Search for the keywords to learn more about each error.
+2025-12-10T09:41:32.850337659Z 19.36 
+2025-12-10T09:41:32.85035763Z 19.36 
+2025-12-10T09:41:32.85036356Z 19.44 npm error Lifecycle script `build` failed with error:
+2025-12-10T09:41:32.85036851Z 19.44 npm error code 1
+2025-12-10T09:41:32.85037297Z 19.44 npm error path /build_src/converter/frontend
+2025-12-10T09:41:32.85037741Z 19.44 npm error workspace file-converter-ui@1.0.0
+2025-12-10T09:41:32.850408111Z 19.44 npm error location /build_src/converter/frontend
+2025-12-10T09:41:32.850414581Z 19.44 npm error command failed
+2025-12-10T09:41:32.850418691Z 19.44 npm error command sh -c react-scripts build
+2025-12-10T09:41:32.850618205Z ------
+2025-12-10T09:41:32.850952073Z Dockerfile:11
+2025-12-10T09:41:32.850965803Z --------------------
+2025-12-10T09:41:32.850971333Z    9 |     WORKDIR /build_src/converter/frontend
+2025-12-10T09:41:32.851004014Z   10 |     RUN npm install
+2025-12-10T09:41:32.851008984Z   11 | >>> RUN npm run build
+2025-12-10T09:41:32.851013024Z   12 |     
+2025-12-10T09:41:32.851017554Z   13 |     # ==========================================
+2025-12-10T09:41:32.851031604Z --------------------
+2025-12-10T09:41:32.851035075Z error: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+2025-12-10T09:41:32.87613527Z error: exit status 1

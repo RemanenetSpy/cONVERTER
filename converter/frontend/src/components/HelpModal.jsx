@@ -115,9 +115,8 @@ function HelpModal({ isOpen, onClose }) {
     const [activeTab, setActiveTab] = useState('start');
     const [searchQuery, setSearchQuery] = useState('');
 
-    if (!isOpen) return null;
-
     const filteredContent = useMemo(() => {
+        if (!isOpen) return []; // optimization
         if (!searchQuery) return CONTENT[activeTab].items;
 
         // Search across ALL tabs if query exists
@@ -126,7 +125,9 @@ function HelpModal({ isOpen, onClose }) {
             item.q.toLowerCase().includes(searchQuery.toLowerCase()) ||
             item.a.toLowerCase().includes(searchQuery.toLowerCase())
         );
-    }, [activeTab, searchQuery]);
+    }, [activeTab, searchQuery, isOpen]);
+
+    if (!isOpen) return null;
 
     return (
         <div className="help-modal-overlay" onClick={onClose}>
