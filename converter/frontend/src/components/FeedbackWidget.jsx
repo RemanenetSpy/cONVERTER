@@ -48,17 +48,19 @@ function FeedbackWidget() {
                     className="feedback-toggle"
                     onClick={() => setIsOpen(true)}
                     title="Send Feedback"
+                    aria-label="Open feedback form"
                 >
                     <MessageSquare size={24} />
+                    <span className="feedback-label">Feedback</span>
                 </button>
             )}
 
             {/* Form Container */}
             {isOpen && (
-                <div className="feedback-form-container">
+                <div className="feedback-form-container" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
                     <div className="feedback-header">
-                        <h3>💬 Send Feedback</h3>
-                        <button className="close-btn" onClick={() => setIsOpen(false)}>
+                        <h3 id="feedback-title">💬 Send Feedback</h3>
+                        <button className="close-btn" onClick={() => setIsOpen(false)} aria-label="Close feedback form">
                             <X size={18} />
                         </button>
                     </div>
@@ -70,11 +72,12 @@ function FeedbackWidget() {
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit}>
-                            <div className="feedback-type-selector">
+                            <div className="feedback-type-selector" role="group" aria-label="Feedback Type">
                                 <button
                                     type="button"
                                     className={type === 'general' ? 'active' : ''}
                                     onClick={() => setType('general')}
+                                    aria-pressed={type === 'general'}
                                 >
                                     General
                                 </button>
@@ -82,6 +85,7 @@ function FeedbackWidget() {
                                     type="button"
                                     className={type === 'bug' ? 'active' : ''}
                                     onClick={() => setType('bug')}
+                                    aria-pressed={type === 'bug'}
                                 >
                                     🐞 Bug
                                 </button>
@@ -89,12 +93,15 @@ function FeedbackWidget() {
                                     type="button"
                                     className={type === 'feature' ? 'active' : ''}
                                     onClick={() => setType('feature')}
+                                    aria-pressed={type === 'feature'}
                                 >
                                     💡 Idea
                                 </button>
                             </div>
 
+                            <label htmlFor="feedback-message" className="sr-only">Message</label>
                             <textarea
+                                id="feedback-message"
                                 placeholder={
                                     type === 'bug' ? "Describe the bug and how to reproduce it..." :
                                         type === 'feature' ? "What feature would you like to see?" :
