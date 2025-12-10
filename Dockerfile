@@ -64,6 +64,8 @@ RUN pip install pdfplumber
 RUN pip install opencv-python-headless
 RUN pip install pydub
 RUN pip install python-docx
+# Force older PyMuPDF for pdf2docx compatibility
+RUN pip install "PyMuPDF<1.25.0"
 RUN pip install pdf2docx
 RUN pip install scikit-image
 RUN pip install PyPDF2
