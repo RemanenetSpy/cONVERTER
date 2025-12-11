@@ -183,13 +183,13 @@
 
 .convert-btn {
   width: 100%;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
-  border: none;
+  background: white;
+  color: #667eea;
+  border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   padding: 16px;
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -197,9 +197,11 @@
   gap: 10px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4), 0 0 0 1px rgba(102, 126, 234, 0.2);
   position: relative;
   overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .convert-btn::before {
@@ -218,8 +220,10 @@
 }
 
 .convert-btn:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.6), 0 0 0 2px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0ff 100%);
+  color: #5a5fcf;
 }
 
 .convert-btn:active:not(:disabled) {
@@ -227,9 +231,11 @@
 }
 
 .convert-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  background: rgba(255, 255, 255, 0.5);
+  color: rgba(102, 126, 234, 0.5);
 }
 
 .info-box {

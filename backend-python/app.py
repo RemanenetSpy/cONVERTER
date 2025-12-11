@@ -711,6 +711,58 @@ def excel_to_pdf():
         logger.exception("Excel to PDF conversion failed")
         return jsonify({"error": str(e)}), 500
 
+@app.route("/api/conversions/image/to-pdf", methods=["POST"])
+@limiter.limit("20 per hour")
+def image_to_pdf():
+    """Convert Image to PDF"""
+    try:
+        if "file" not in request.files:
+            return jsonify({"error": "No file provided"}), 400
+        
+        file = request.files["file"]
+        if not file or not allowed_file(file.filename):
+            return jsonify({"error": "Invalid file"}), 400
+        
+        filename = secure_filename(file.filename)
+        input_path = os.path.join(UPLOAD_FOLDER, filename)
+        file.save(input_path)
+        
+        output_filename = f"{Path(filename).stem}_{int(datetime.now().timestamp())}.pdf"
+        output_path = os.path.join(OUTPUT_FOLDER, output_filename)
+        
+        # Convert single image to PDF (images_to_pdf expects a list)
+        result = PDFConverter.images_to_pdf([input_path], output_path)
+        
+        # Recipe
+        recipe = None
+        try:
+            input_format = Path(filename).suffix[1:].lower()
+            recipe = RecipeManager.create_recipe(
+                input_file=input_path,
+                output_file=output_path,
+                input_format=input_format,
+                output_format="pdf"
+            )
+            recipe = RecipeManager.finalize_recipe(recipe, output_path)
+        except Exception as e:
+            logger.warning(f"Recipe failed: {e}")
+
+        if os.path.exists(input_path):
+            os.remove(input_path)
+        
+        return jsonify({
+            "success": True,
+            "outputFileName": output_filename,
+            "recipe": recipe,
+            "output": {"file": output_filename, "size": os.path.getsize(output_path)},
+            "images": result.get("images", 1),
+            "message": result.get("message", "Image converted to PDF")
+        })
+    
+    except Exception as e:
+        logger.exception("Image to PDF conversion failed")
+        return jsonify({"error": str(e)}), 500
+
 # ============================================================
 # JSON CONVERSION ENDPOINTS
 # ============================================================

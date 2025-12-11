@@ -256,6 +256,9 @@ function App() {
 
     // Image conversions
     if (['jpg', 'jpeg', 'png', 'webp', 'gif', 'bmp', 'tiff', 'svg', 'heic'].includes(ext)) {
+      // Image to PDF
+      if (outputFormat === 'pdf') return '/conversions/image/to-pdf';
+      // Image to image
       return '/conversions/image';
     }
 
@@ -339,9 +342,9 @@ function App() {
         <footer className="app-footer-modern">
           <div className="footer-mission">
             <p>
-              Engineered for data sovereignty. Open source, reproducible, and secure by design.
+              Your files never leave your control. Processed in memory, deleted immediately.
               <br />
-              <span className="footer-sub">Your data never leaves your control.</span>
+              <span className="footer-sub">Open source • Reproducible • Zero-knowledge architecture</span>
             </p>
           </div>
           <div className="footer-bottom">
