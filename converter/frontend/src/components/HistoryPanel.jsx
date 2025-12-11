@@ -137,10 +137,11 @@ function HistoryPanel({ conversions, onRemove }) {
 
   return (
     <div className="history-panel">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+      <div className="history-panel-header">
         <h2>📜 Conversion History</h2>
         {conversions.length > 0 && (
           <button
+            className="clear-all-btn"
             onClick={async () => {
               if (window.confirm('Clear all conversion history?')) {
                 // Delete all files from server first
@@ -164,15 +165,6 @@ function HistoryPanel({ conversions, onRemove }) {
                   conversions.forEach(c => onRemove(c.id));
                 }
               }
-            }}
-            style={{
-              background: 'rgba(255, 59, 48, 0.2)',
-              border: '1px solid rgba(255, 59, 48, 0.5)',
-              color: '#ff3b30',
-              padding: '8px 16px',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontSize: '14px'
             }}
           >
             🗑️ Clear All
