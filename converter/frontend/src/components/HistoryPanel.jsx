@@ -110,8 +110,25 @@ function HistoryPanel({ conversions, onRemove }) {
     `);
   };
 
-  const handleRemove = (conversionId) => {
+  const handleRemove = async (conversionId) => {
     if (window.confirm('Are you sure you want to remove this conversion from history?')) {
+      // Find the conversion to get the filename
+      const conversion = conversions.find(c => c.id === conversionId);
+
+      // Delete from server first (privacy-first)
+      if (conversion && conversion.outputFileName) {
+        try {
+          await fetch(`${API_BASE_URL}/file/${conversion.outputFileName}`, {
+            method: 'DELETE'
+          });
+          console.log(`Deleted file from server: ${conversion.outputFileName}`);
+        } catch (error) {
+          console.error('Failed to delete file from server:', error);
+          // Continue with local deletion even if server deletion fails
+        }
+      }
+
+      // Remove from local history
       if (onRemove) {
         onRemove(conversionId);
       }
@@ -124,8 +141,25 @@ function HistoryPanel({ conversions, onRemove }) {
         <h2>📜 Conversion History</h2>
         {conversions.length > 0 && (
           <button
-            onClick={() => {
+            onClick={async () => {
               if (window.confirm('Clear all conversion history?')) {
+                // Delete all files from server first
+                const deletePromises = conversions.map(async (c) => {
+                  if (c.outputFileName) {
+                    try {
+                      await fetch(`${API_BASE_URL}/file/${c.outputFileName}`, {
+                        method: 'DELETE'
+                      });
+                      console.log(`Deleted file from server: ${c.outputFileName}`);
+                    } catch (error) {
+                      console.error('Failed to delete file:', error);
+                    }
+                  }
+                });
+
+                await Promise.all(deletePromises);
+
+                // Remove from local history
                 if (onRemove) {
                   conversions.forEach(c => onRemove(c.id));
                 }

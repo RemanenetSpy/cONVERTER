@@ -1204,6 +1204,22 @@ def download_file(filename):
         logger.exception("File download failed")
         return jsonify({"error": "Download failed"}), 500
 
+@app.route("/api/file/<filename>", methods=["DELETE"])
+@limiter.limit("100 per hour")
+def delete_file(filename):
+    """Delete a converted file immediately (privacy-first)"""
+    try:
+        file_path = os.path.join(OUTPUT_FOLDER, secure_filename(filename))
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            logger.info(f"User-requested deletion: {filename}")
+            return jsonify({"success": True, "message": "File deleted"}), 200
+        else:
+            return jsonify({"success": True, "message": "File already deleted"}), 200
+    except Exception:
+        logger.exception("File deletion failed")
+        return jsonify({"error": "Deletion failed"}), 500
+
 @app.route("/api/recipe/<recipe_id>", methods=["GET"])
 def get_recipe(recipe_id):
     try:

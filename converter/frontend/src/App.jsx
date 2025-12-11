@@ -74,9 +74,7 @@ function App() {
 
   // Save conversions to localStorage whenever they change
   useEffect(() => {
-    if (conversions.length > 0) {
-      localStorage.setItem('conversions', JSON.stringify(conversions));
-    }
+    localStorage.setItem('conversions', JSON.stringify(conversions));
   }, [conversions]);
 
   // Check API health on mount
