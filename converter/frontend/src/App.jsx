@@ -344,7 +344,7 @@ function App() {
             <p>
               Your files never leave your control. Processed in memory, deleted immediately.
               <br />
-              <span className="footer-sub">Open source • Reproducible • Zero-knowledge architecture</span>
+              <span className="footer-sub">Open source • Reproducible • Ephemeral processing</span>
             </p>
           </div>
           <div className="footer-bottom">
