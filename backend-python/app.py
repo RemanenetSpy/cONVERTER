@@ -1260,21 +1260,70 @@ def rate_limit_handler(e):
 @app.route("/api/feedback", methods=["POST"])
 @limiter.limit("2 per hour")
 def submit_feedback():
-    """Submit user feedback/bug report"""
+    """Submit user feedback"""
     try:
-        data = request.json
+        data = request.get_json()
         if not data or not data.get("message"):
             return jsonify({"error": "Message is required"}), 400
-            
-        # Add metadata headers
-        data["userAgent"] = request.headers.get("User-Agent")
+        
+        # Add browser metadata
+        data["userAgent"] = request.headers.get("User-Agent", "unknown")
+        data["page"] = data.get("page", "/")
         
         result = FeedbackManager.save_feedback(data)
-        return jsonify(result)
+        return jsonify(result), 200
         
     except Exception as e:
         logger.exception("Feedback submission failed")
         return jsonify({"error": "Failed to save feedback"}), 500
+
+@app.route("/api/admin/feedback", methods=["GET"])
+@limiter.limit("20 per hour")
+def view_all_feedback():
+    """View all feedback (protected by secret token)"""
+    try:
+        # Check authorization
+        secret = request.headers.get("X-Admin-Secret") or request.args.get("secret")
+        expected_secret = os.getenv("ADMIN_SECRET", "converter_admin_2025")
+        
+        if secret != expected_secret:
+            return jsonify({"error": "Unauthorized"}), 401
+        
+        feedback_dir = "./feedback"
+        if not os.path.exists(feedback_dir):
+            return jsonify({
+                "feedback": [],
+                "count": 0,
+                "message": "No feedback submitted yet"
+            })
+        
+        all_feedback = []
+        files_processed = []
+        
+        for filename in sorted(os.listdir(feedback_dir)):
+            if filename.endswith('.jsonl'):
+                filepath = os.path.join(feedback_dir, filename)
+                files_processed.append(filename)
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        try:
+                            all_feedback.append(json.loads(line.strip()))
+                        except json.JSONDecodeError:
+                            continue
+        
+        # Sort by timestamp (newest first)
+        all_feedback.sort(key=lambda x: x.get('timestamp', ''), reverse=True)
+        
+        return jsonify({
+            "success": True,
+            "feedback": all_feedback,
+            "count": len(all_feedback),
+            "files": files_processed
+        })
+        
+    except Exception as e:
+        logger.exception("Failed to retrieve feedback")
+        return jsonify({"error": "Failed to retrieve feedback"}), 500
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
