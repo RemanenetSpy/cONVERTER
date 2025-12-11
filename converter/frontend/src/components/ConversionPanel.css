@@ -204,6 +204,23 @@
   letter-spacing: 1px;
 }
 
+/* Pulse animation when button is enabled and ready */
+.convert-btn:not(:disabled) {
+  animation: readyPulse 2s ease-in-out infinite;
+}
+
+@keyframes readyPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4), 0 0 0 1px rgba(102, 126, 234, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 8px 35px rgba(255, 255, 255, 0.7), 0 0 0 3px rgba(102, 126, 234, 0.5), 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+}
+
 .convert-btn::before {
   content: '';
   position: absolute;
@@ -231,11 +248,14 @@
 }
 
 .convert-btn:disabled {
-  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
-  background: rgba(255, 255, 255, 0.5);
-  color: rgba(102, 126, 234, 0.5);
+  /* Keep full brightness even when disabled */
+  background: white;
+  color: #667eea;
+  opacity: 1;
+  /* Subtle visual cue that it's not ready */
+  filter: grayscale(20%);
 }
 
 .info-box {
