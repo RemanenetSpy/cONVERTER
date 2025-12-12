@@ -52,10 +52,16 @@ function ConversionPanel({ selectedFile, supportedFormats, onConvert, loading, p
     return ['jpg', 'jpeg', 'png', 'webp', 'pdf', 'xlsx', 'csv'].includes(ext);
   }, [selectedFile]);
 
+
   const handleConvert = async () => {
-    if (!selectedFile) return; // Should not happen if button is disabled, but good for safety
+    if (!selectedFile) return;
 
     const inputExt = selectedFile.name.split('.').pop().toLowerCase();
+
+    // Define options object
+    const options = {
+      quality: quality,
+    };
 
     if (compressionMode) {
       const ext = selectedFile.name.split('.').pop().toLowerCase();
@@ -67,9 +73,16 @@ function ConversionPanel({ selectedFile, supportedFormats, onConvert, loading, p
         alert('⚠️ Compression not supported for this file type yet');
         return;
       }
+      await onConvert('compress', options);
+      trackConversion(inputExt, 'compress', selectedFile.size);
+    } else {
+      if (!selectedFormat) {
+        alert('⚠️ Please select an output format first!');
+        return;
+      }
+      await onConvert(selectedFormat, options);
+      trackConversion(inputExt, selectedFormat, selectedFile.size);
     }
-
-    onConvert(compressionMode ? 'compress' : selectedFormat, options);
   };
 
   return (
