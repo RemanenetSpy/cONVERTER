@@ -12,6 +12,7 @@ import FeedbackWidget from './components/FeedbackWidget';
 import HelpModal from './components/HelpModal';
 import { getFormatIcon } from './utils/formatUtils';
 import { getSmartSuggestion, detectUseCase, getApplicableTemplates } from './utils/smartSuggestions';
+import { trackConversion, trackDownload } from './utils/analytics';
 import { HelpCircle } from 'lucide-react';
 import Cube3D from './components/Cube3D';
 

@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Zap, Settings } from 'lucide-react';
+import { trackConversion } from '../utils/analytics';
 import './ConversionPanel.css';
 
 function ConversionPanel({ selectedFile, supportedFormats, onConvert, loading, progress }) {
@@ -51,15 +52,10 @@ function ConversionPanel({ selectedFile, supportedFormats, onConvert, loading, p
     return ['jpg', 'jpeg', 'png', 'webp', 'pdf', 'xlsx', 'csv'].includes(ext);
   }, [selectedFile]);
 
-  const handleConvert = () => {
-    if (!compressionMode && !selectedFormat) {
-      alert('⚠️ Please select an output format first!');
-      return;
-    }
+  const handleConvert = async () => {
+    if (!selectedFile) return; // Should not happen if button is disabled, but good for safety
 
-    const options = {
-      quality: quality,
-    };
+    const inputExt = selectedFile.name.split('.').pop().toLowerCase();
 
     if (compressionMode) {
       const ext = selectedFile.name.split('.').pop().toLowerCase();
