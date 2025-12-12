@@ -86,8 +86,8 @@ COPY --from=frontend_build /build_src/converter/frontend/build ./frontend_build
 # Create uploads directory
 RUN mkdir -p uploads
 
-# Expose port 5000
-EXPOSE 5000
+# Expose the port Render expects
+EXPOSE 10000
 
-# Run the application
-CMD ["python", "app.py"]
+# Run the app with a production WSGI server
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:10000"]

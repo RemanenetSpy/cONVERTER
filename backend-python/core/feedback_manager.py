@@ -65,14 +65,32 @@ Feedback ID: {feedback_data.get('id', 'N/A')}
 """
             msg.set_content(body)
             
-            # Send email with timeout
-            with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
-                server.starttls()
-                server.login(smtp_user, smtp_password)
-                server.send_message(msg)
+            logger.info(f"Connecting to SMTP server: {smtp_server}:{smtp_port}...")
             
-            logger.info(f"Email sent for feedback {feedback_data.get('id')}")
-            return True
+            # Send email with timeout
+            try:
+                with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
+                    logger.info("SMTP connection established. Starting TLS...")
+                    server.starttls()
+                    
+                    logger.info(f"Authenticating with user: {smtp_user}...")
+                    server.login(smtp_user, smtp_password)
+                    
+                    logger.info("Authentication successful. Sending email...")
+                    server.send_message(msg)
+                    
+                logger.info(f"✅ Email sent successfully for feedback {feedback_data.get('id')}")
+                return True
+                
+            except smtplib.SMTPAuthenticationError as e:
+                logger.error(f"❌ SMTP Authentication failed: {e}")
+                return False
+            except smtplib.SMTPException as e:
+                logger.error(f"❌ SMTP error: {e}")
+                return False
+            except Exception as e:
+                logger.error(f"❌ Email send failed: {e}")
+                return False
             
         except Exception as e:
             logger.error(f"Failed to send email notification: {e}")
