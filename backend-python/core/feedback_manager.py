@@ -18,7 +18,10 @@ class FeedbackManager:
     @classmethod
     def _send_email_notification(cls, feedback_data: Dict[str, Any]) -> bool:
         """Send email notification for new feedback (runs in background thread)"""
+        # Wrap EVERYTHING to catch thread errors
         try:
+            logger.info("Email thread started - checking configuration...")
+            
             # Check if email is configured
             smtp_server = os.getenv("SMTP_SERVER")
             smtp_port = int(os.getenv("SMTP_PORT", "587"))
@@ -26,9 +29,13 @@ class FeedbackManager:
             smtp_password = os.getenv("SMTP_PASSWORD")
             admin_email = os.getenv("ADMIN_EMAIL")
             
+            logger.info(f"Email config check - Server: {smtp_server}, User: {smtp_user}, Admin: {admin_email}")
+            
             if not all([smtp_server, smtp_user, smtp_password, admin_email]):
-                logger.info("Email notifications not configured (missing env vars)")
+                logger.warning("Email notifications not configured (missing env vars)")
                 return False
+            
+            logger.info("Email config valid - creating message...")
             
             # Create email
             msg = EmailMessage()
