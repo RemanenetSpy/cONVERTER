@@ -101,6 +101,9 @@ Feedback ID: {feedback_data.get('id', 'N/A')}
             with open(filename, "a", encoding="utf-8") as f:
                 f.write(json.dumps(entry) + "\n")
             
+            # Log before starting email thread (debug)
+            logger.info(f"Feedback saved: {entry['id']}. Starting email thread...")
+            
             # Send email in background thread (non-blocking - doesn't delay response)
             email_thread = threading.Thread(
                 target=cls._send_email_notification,
