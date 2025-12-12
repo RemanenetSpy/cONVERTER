@@ -19,16 +19,23 @@ ADMIN_EMAIL=your.email@gmail.com
 ## Option 2: SendGrid (Recommended for Production)
 
 1. **Sign up:** https://sendgrid.com (free tier: 100 emails/day)
-2. **Create API Key**
-3. **Add to Render Environment:**
+2. **Create API Key:** Settings → API Keys → Create API Key
+3. **Copy the API Key** (you'll only see it once!)
+4. **Add to Render Environment:**
+
+**IMPORTANT:** For SendGrid, `SMTP_USER` is literally the word `apikey`
 
 ```
 SMTP_SERVER=smtp.sendgrid.net
 SMTP_PORT=587
 SMTP_USER=apikey
-SMTP_PASSWORD=your_sendgrid_api_key
+SMTP_PASSWORD=SG.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ADMIN_EMAIL=your.email@example.com
 ```
+
+**Note:**
+- `SMTP_USER` = `apikey` (exactly as written, NOT your username)
+- `SMTP_PASSWORD` = Your actual SendGrid API key (starts with `SG.`)
 
 ## Option 3: Any SMTP Provider
 
