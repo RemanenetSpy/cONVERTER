@@ -40,7 +40,7 @@ class FeedbackManager:
             # Create email
             msg = EmailMessage()
             msg['Subject'] = f"New {feedback_data.get('type', 'feedback').title()} - Converter App"
-            msg['From'] = smtp_user
+            msg['From'] = admin_email  # Use verified sender email
             msg['To'] = admin_email
             
             # Email body
