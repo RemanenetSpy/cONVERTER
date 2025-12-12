@@ -3,6 +3,7 @@ import os
 import json
 import logging
 import smtplib
+import threading
 from email.message import EmailMessage
 from datetime import datetime
 from typing import Dict, Any, Optional
@@ -16,7 +17,7 @@ class FeedbackManager:
     
     @classmethod
     def _send_email_notification(cls, feedback_data: Dict[str, Any]) -> bool:
-        """Send email notification for new feedback"""
+        """Send email notification for new feedback (runs in background thread)"""
         try:
             # Check if email is configured
             smtp_server = os.getenv("SMTP_SERVER")
@@ -57,8 +58,8 @@ Feedback ID: {feedback_data.get('id', 'N/A')}
 """
             msg.set_content(body)
             
-            # Send email
-            with smtplib.SMTP(smtp_server, smtp_port) as server:
+            # Send email with timeout
+            with smtplib.SMTP(smtp_server, smtp_port, timeout=10) as server:
                 server.starttls()
                 server.login(smtp_user, smtp_password)
                 server.send_message(msg)
@@ -100,8 +101,13 @@ Feedback ID: {feedback_data.get('id', 'N/A')}
             with open(filename, "a", encoding="utf-8") as f:
                 f.write(json.dumps(entry) + "\n")
             
-            # Send email notification (non-blocking - doesn't fail if email fails)
-            cls._send_email_notification(entry)
+            # Send email in background thread (non-blocking - doesn't delay response)
+            email_thread = threading.Thread(
+                target=cls._send_email_notification,
+                args=(entry,),
+                daemon=True
+            )
+            email_thread.start()
                 
             return {"success": True, "id": entry["id"]}
             
